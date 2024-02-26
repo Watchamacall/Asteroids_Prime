@@ -33,6 +33,20 @@ int main()
         // Reset the window
         window.clear();
 
+        /*
+        * Requirements: 
+        * -	The game starts with the player ship in the center of the screen
+        * -	Their score and number of remaining lives are always visible. They start with 0 score and 3 lives
+        * -	The player can move the ship forwards, and turn left and right
+        * -	The player can shoot bullets, that fire forward in the direction the ship is facing
+        * -	Asteroids spawn from outside of the screen. They move with a constant velocity
+        * -	The screen is static, but it “wraps” for the player and asteroids. When they exit the screen on one side they reappear on the other. Bullets do not wrap
+        * -	If the player collides with an asteroid they lose a life and respawn in the center of the screen. They start with a “grace period” when they cannot collide with another asteroid
+        * -	Once a player loses all their lives the game ends
+        * -	When a bullet collides with an asteroid, both are destroyed and the player earns some score
+        * -	When an asteroid is destroyed it splits into two smaller ones. This split happens twice (large->medium->small). The smallest asteroids do not split when destroyed
+        * - Add One or Two new Features
+        */
         //-----------------------------------------------------------------------------------
         // Game logic can go here
 
