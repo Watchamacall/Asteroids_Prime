@@ -10,16 +10,22 @@ Actor::Actor(GameManager* Manager)
 	Sprite = sf::Sprite(Texture);
 }
 
-void Actor::Hit()
+Actor::~Actor()
+{
+	delete Manager;
+	delete TextureLocation;
+}
+void Actor::Hit(Actor* Other)
 {
 
 }
 
 void Actor::FrameTime(float dt)
 {
+
 }
 
-bool Actor::CollidedWith(sf::Sprite Other)
+bool Actor::CollidedWith(Actor* Other)
 {
 	return Sprite.getGlobalBounds().intersects(Other.getGlobalBounds());
 }

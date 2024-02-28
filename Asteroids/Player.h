@@ -15,6 +15,6 @@ public:
 	void Shoot();
 
 	void Input(sf::Event InputEvent);
-	virtual void Hit() override;
+	virtual void Hit(Actor* Other) override;
 };
 

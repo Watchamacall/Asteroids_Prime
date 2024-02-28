@@ -14,9 +14,16 @@ public:
 public:
 	Actor(GameManager* Manager);
 
-protected:
-	virtual void Hit();
+	~Actor();
+
 	virtual void FrameTime(float dt);
-	bool CollidedWith(sf::Sprite Other);
+	/*
+	* Called when this has been Hit
+	*/
+	virtual void Hit(Actor* Other);
+	/*
+	* Returns true if this has collided with Other
+	*/
+	bool CollidedWith(Actor* Other);
 };
 

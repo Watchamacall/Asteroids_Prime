@@ -13,7 +13,10 @@ GameManager::~GameManager()
 	{
 		delete Asteroid;
 	}
-
+	for (auto SinActor : SpawnedActors)
+	{
+		delete SinActor;
+	}
 	delete GameClock;
 	delete Window;
 }
@@ -34,20 +37,68 @@ Player* GameManager::GetPlayer()
 	return PlayerPtr;
 }
 
+void GameManager::RunTime()
+{
+	/*
+	* Nested for loop going through each Actor and checking for collision
+	*/
+	for (size_t i = 0; i < SpawnedActors.size(); i++)
+	{
+		for (size_t j = i + 1; j < SpawnedActors.size(); j++)
+		{
+			if (SpawnedActors[i]->CollidedWith(SpawnedActors[j]))
+			{
+				SpawnedActors[i]->Hit(SpawnedActors[j]);
+			}
+		}
+		SpawnedActors[i]->FrameTime(dt.asSeconds()); //Frametime call
+	}
+}
+
+void GameManager::Remove(Actor* ActorToDelete)
+{
+	//If Asteroid
+	if (Asteroid* Delete = dynamic_cast<Asteroid*>(ActorToDelete))
+	{
+		auto Found = std::find(SpawnedAsteroids.begin(), SpawnedAsteroids.end(), Delete);
+		if (Found != SpawnedAsteroids.end())
+		{
+			SpawnedAsteroids.erase(Found);
+			delete &Found;
+		}
+	}
+
+	auto Found = std::find(SpawnedActors.begin(), SpawnedActors.end(), ActorToDelete);
+	if (Found != SpawnedActors.end())
+	{
+		SpawnedActors.erase(Found);
+		delete& Found;
+	}
+}
+
 void GameManager::StartGame()
 {
-
-
 	if (!PlayerPtr)
 	{
 		PlayerPtr = new Player(this);
+		SpawnedActors.push_back(PlayerPtr);
 	}
+
 }
 
 void GameManager::EndGame()
 {
+	//Show your 
 }
 
-void GameManager::SpawnAsteroid(sf::Vector2f Location, sf::Vector2f Direction)
+void GameManager::SpawnAsteroid(sf::Vector2f Location, sf::Vector2f Direction, bool Random = true)
 {
+	if (SpawnedAsteroids.size() > MaxAsteroids)
+		return;
+	
+	Asteroid* NewAst = new Asteroid(this);
+	SpawnedAsteroids.push_back(NewAst);
+
+	NewAst->MoveDirection = Direction;
 }
+

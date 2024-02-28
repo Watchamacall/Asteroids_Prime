@@ -27,16 +27,20 @@ private:
 	float AsteroidSpawnTime;
 	float InvulnerabilityFrames;
 
+	std::vector<Actor*> SpawnedActors;
+
 public:
 	GameManager();
 	~GameManager();
 
 	static sf::Vector2f DegreesToVector2f(float Degrees);
 	Player* GetPlayer();
+	void RunTime();
+
+	void Remove(Actor* ActorToDelete);
 private:
 	void StartGame();
 	void EndGame();
-	void SpawnAsteroid(sf::Vector2f Location, sf::Vector2f Direction);
-
+	void SpawnAsteroid(sf::Vector2f Location, sf::Vector2f Direction, bool Random = true);
 };
 

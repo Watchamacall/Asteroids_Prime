@@ -22,6 +22,7 @@ int main()
             }
         }
 
+
         // Reset the window
         Manager->Window->clear();
 

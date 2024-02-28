@@ -57,6 +57,7 @@ void Player::Input(sf::Event InputEvent)
 	}
 }
 
-void Player::Hit()
+void Player::Hit(Actor* Other)
 {
+
 }
