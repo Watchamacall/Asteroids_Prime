@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GameManager.h"
 
+class GameManager;
 
 class Actor
 {
@@ -9,13 +9,16 @@ public:
 	char* TextureLocation;
 	sf::Texture Texture;
 	sf::Sprite Sprite;
-	static GameManager* Manager;
+	GameManager* Manager;
 
 public:
 	Actor(GameManager* Manager);
 
 	~Actor();
 
+	/*
+	* Called each frame
+	*/
 	virtual void FrameTime(float dt);
 	/*
 	* Called when this has been Hit

@@ -5,6 +5,7 @@
 
 #include "Asteroid.h"
 #include "Player.h"
+#include "Actor.h"
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -19,10 +20,10 @@ public:
 
 private:
 	const int MaxLives = 3;
-	int CurLives;
+	int CurLives = 3;
 	const int MaxAsteroids = 10;
 	int CurScore;
-	std::vector<Asteroid*> SpawnedAsteroids;
+	std::vector<Asteroid*> SpawnedAsteroids = std::vector<Asteroid*>();
 	Player* PlayerPtr;
 	float AsteroidSpawnTime;
 	float InvulnerabilityFrames;
@@ -41,6 +42,6 @@ public:
 private:
 	void StartGame();
 	void EndGame();
-	void SpawnAsteroid(sf::Vector2f Location, sf::Vector2f Direction, bool Random = true);
+	void SpawnAsteroid(sf::Vector2f Location, sf::Vector2f Direction);
 };
 

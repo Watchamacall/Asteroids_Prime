@@ -1,6 +1,8 @@
 #pragma once
 #include "Projectile.h"
-#include "Actor.h"
+
+class Actor;
+
 class Player : public Actor
 {
 protected:

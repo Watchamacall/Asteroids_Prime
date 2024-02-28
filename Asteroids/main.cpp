@@ -10,25 +10,33 @@ int main()
     {
         Manager->dt = Manager->GameClock->restart();
 
+        std::cout << Manager->dt.asSeconds() << std::endl;
         // Poll for window being closed
-        sf::Event event;
-        while (Manager->Window->pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                Manager->Window->close();
-            if (event.type == sf::Event::KeyPressed)
-            {
-                Manager->GetPlayer()->Input(event);
-            }
-        }
+        //sf::Event event;
+        //while (Manager->Window->pollEvent(event))
+        //{
+        //    if (event.type == sf::Event::Closed)
+        //        Manager->Window->close();
+        //    if (event.type == sf::Event::KeyPressed)
+        //    {
+        //        Manager->GetPlayer()->Input(event);
+        //    }
+        //    if (event.type == sf::Event::KeyReleased)
+        //    {
+        //        Manager->GetPlayer()->Input(event);
+        //    }
+        //}
 
 
-        // Reset the window
-        Manager->Window->clear();
+        //// Reset the window
+        //Manager->Window->clear();
 
-        //Add all the main code here
+        ////Add all the main code here
 
+
+        //Manager->Window->display();
     }
+    /*
     sf::RenderWindow window(sf::VideoMode(800, 800), "LHG Code Exercise");
     sf::Clock GameClock;
 
@@ -60,7 +68,7 @@ int main()
         // Reset the window
         window.clear();
 
-        /*
+        
         * Requirements: 
         * -	The game starts with the player ship in the center of the screen
         * -	Their score and number of remaining lives are always visible. They start with 0 score and 3 lives
@@ -72,7 +80,7 @@ int main()
         * -	Once a player loses all their lives the game ends
         * -	When a bullet collides with an asteroid, both are destroyed and the player earns some score
         * -	When an asteroid is destroyed it splits into two smaller ones. This split \happens twice (large->medium->small). The smallest asteroids do not split when destroyed
-        */
+        
         //-----------------------------------------------------------------------------------
         // Game logic can go here
 
@@ -90,7 +98,8 @@ int main()
         //-----------------------------------------------------------------------------------
         // Display the updated game state
         window.display();
+        
     }
-
+    */
     return 0;
 }

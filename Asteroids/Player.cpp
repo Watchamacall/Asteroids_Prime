@@ -1,3 +1,5 @@
+#include "Actor.h"
+#include "GameManager.h"
 #include "Player.h"
 
 Player::Player(GameManager* Manager) : Actor(Manager)

@@ -91,7 +91,7 @@ void GameManager::EndGame()
 	//Show your 
 }
 
-void GameManager::SpawnAsteroid(sf::Vector2f Location, sf::Vector2f Direction, bool Random = true)
+void GameManager::SpawnAsteroid(sf::Vector2f Location, sf::Vector2f Direction)
 {
 	if (SpawnedAsteroids.size() > MaxAsteroids)
 		return;
@@ -99,6 +99,7 @@ void GameManager::SpawnAsteroid(sf::Vector2f Location, sf::Vector2f Direction, b
 	Asteroid* NewAst = new Asteroid(this);
 	SpawnedAsteroids.push_back(NewAst);
 
+	NewAst->Sprite.setPosition(Location);
 	NewAst->MoveDirection = Direction;
 }
 

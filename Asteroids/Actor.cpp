@@ -1,4 +1,5 @@
 #include "Actor.h"
+#include "GameManager.h"
 
 Actor::Actor(GameManager* Manager)
 {
@@ -27,5 +28,5 @@ void Actor::FrameTime(float dt)
 
 bool Actor::CollidedWith(Actor* Other)
 {
-	return Sprite.getGlobalBounds().intersects(Other.getGlobalBounds());
+	return Sprite.getGlobalBounds().intersects(Other->Sprite.getGlobalBounds());
 }

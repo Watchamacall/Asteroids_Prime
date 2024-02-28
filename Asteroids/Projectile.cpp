@@ -1,12 +1,13 @@
 #include "Projectile.h"
+#include "GameManager.h"
 
-Projectile::Projectile(GameManager* Manager, sf::Vector2f Location, sf::Vector2f DirectionForce) : Actor(Manager)
+Projectile::Projectile(GameManager* Manager, sf::Vector2f Location, float DirectionForce) : Actor(Manager)
 {
 	if (Texture.loadFromFile(TextureLocation))
 	{
 		Sprite = sf::Sprite(Texture);
 		Sprite.setPosition(Location);
-		MoveVector = DirectionForce;
+		MoveVector = GameManager::DegreesToVector2f(DirectionForce);
 	}
 }
 
