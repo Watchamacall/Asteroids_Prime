@@ -32,7 +32,7 @@ void Player::Rotate(float RotateAngle)
 
 void Player::Shoot()
 {
-	Projectile* NewProjectle = new Projectile(Manager, Sprite.getPosition(), Sprite.getRotation());
+	Projectile* NewProjectile = Manager->Spawn<Projectile>(Sprite.getPosition(), Sprite.getRotation());
 	//Play Sound
 }
 

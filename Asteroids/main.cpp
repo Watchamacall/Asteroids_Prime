@@ -6,35 +6,37 @@ int main()
 {
     GameManager* Manager = new GameManager();
 
+    float DeltaTime = 0.f;
+
+    Manager->StartGame();
+
     while (Manager->Window->isOpen())
     {
         Manager->dt = Manager->GameClock->restart();
 
-        std::cout << Manager->dt.asSeconds() << std::endl;
+
         // Poll for window being closed
-        //sf::Event event;
-        //while (Manager->Window->pollEvent(event))
-        //{
-        //    if (event.type == sf::Event::Closed)
-        //        Manager->Window->close();
-        //    if (event.type == sf::Event::KeyPressed)
-        //    {
-        //        Manager->GetPlayer()->Input(event);
-        //    }
-        //    if (event.type == sf::Event::KeyReleased)
-        //    {
-        //        Manager->GetPlayer()->Input(event);
-        //    }
-        //}
+        sf::Event event;
+        while (Manager->Window->pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                Manager->Window->close();
+            if (event.type == sf::Event::KeyPressed)
+                Manager->GetPlayer()->Input(event);
+            if (event.type == sf::Event::KeyReleased)
+                Manager->GetPlayer()->Input(event);
+        }
+
+        Manager->RunTime();
 
 
-        //// Reset the window
-        //Manager->Window->clear();
+        // Reset the window
+        Manager->Window->clear();
 
-        ////Add all the main code here
+        //Add all the main code here
 
 
-        //Manager->Window->display();
+        Manager->Window->display();
     }
     /*
     sf::RenderWindow window(sf::VideoMode(800, 800), "LHG Code Exercise");

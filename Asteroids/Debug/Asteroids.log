@@ -1,49 +1,19 @@
 ﻿  Actor.cpp
   Asteroid.cpp
+C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\Asteroid.cpp(21,9): error C2027: use of undefined type 'GameManager'
+C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\Asteroid.h(4,7): message : see declaration of 'GameManager'
   GameManager.cpp
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\GameManager.cpp(26,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\GameManager.cpp(96,30): warning C4018: '>': signed/unsigned mismatch
+C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(38,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(111,30): warning C4018: '>': signed/unsigned mismatch
+C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(139,27): error C2226: syntax error: unexpected type 'Asteroid'
+C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(114,45): message : see reference to function template instantiation 'T *GameManager::Spawn<Asteroid>(sf::Vector2f,float)' being compiled
+          with
+          [
+              T=Asteroid
+          ]
+C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(139,27): error C2144: syntax error: 'Asteroid' should be preceded by '('
+C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(138,1): error C2143: syntax error: missing ';' before '{'
   main.cpp
   Player.cpp
   Projectile.cpp
   Generating Code...
-Actor.obj : error LNK2019: unresolved external symbol "public: virtual __thiscall sf::Transformable::~Transformable(void)" (??1Transformable@sf@@UAE@XZ) referenced in function "public: virtual __thiscall sf::Sprite::~Sprite(void)" (??1Sprite@sf@@UAE@XZ)
-Projectile.obj : error LNK2001: unresolved external symbol "public: virtual __thiscall sf::Transformable::~Transformable(void)" (??1Transformable@sf@@UAE@XZ)
-Actor.obj : error LNK2019: unresolved external symbol "public: __thiscall sf::Texture::Texture(void)" (??0Texture@sf@@QAE@XZ) referenced in function "public: __thiscall Actor::Actor(class GameManager *)" (??0Actor@@QAE@PAVGameManager@@@Z)
-Actor.obj : error LNK2019: unresolved external symbol "public: __thiscall sf::Texture::~Texture(void)" (??1Texture@sf@@QAE@XZ) referenced in function __unwindfunclet$??0Actor@@QAE@PAVGameManager@@@Z$0
-Actor.obj : error LNK2019: unresolved external symbol "public: bool __thiscall sf::Texture::loadFromFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class sf::Rect<int> const &)" (?loadFromFile@Texture@sf@@QAE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$Rect@H@2@@Z) referenced in function "public: __thiscall Actor::Actor(class GameManager *)" (??0Actor@@QAE@PAVGameManager@@@Z)
-Projectile.obj : error LNK2001: unresolved external symbol "public: bool __thiscall sf::Texture::loadFromFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class sf::Rect<int> const &)" (?loadFromFile@Texture@sf@@QAE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$Rect@H@2@@Z)
-Actor.obj : error LNK2019: unresolved external symbol "public: __thiscall sf::Sprite::Sprite(void)" (??0Sprite@sf@@QAE@XZ) referenced in function "public: __thiscall Actor::Actor(class GameManager *)" (??0Actor@@QAE@PAVGameManager@@@Z)
-Actor.obj : error LNK2019: unresolved external symbol "public: __thiscall sf::Sprite::Sprite(class sf::Texture const &)" (??0Sprite@sf@@QAE@ABVTexture@1@@Z) referenced in function "public: __thiscall Actor::Actor(class GameManager *)" (??0Actor@@QAE@PAVGameManager@@@Z)
-Projectile.obj : error LNK2001: unresolved external symbol "public: __thiscall sf::Sprite::Sprite(class sf::Texture const &)" (??0Sprite@sf@@QAE@ABVTexture@1@@Z)
-Actor.obj : error LNK2019: unresolved external symbol "public: class sf::Rect<float> __thiscall sf::Sprite::getGlobalBounds(void)const " (?getGlobalBounds@Sprite@sf@@QBE?AV?$Rect@M@2@XZ) referenced in function "public: bool __thiscall Actor::CollidedWith(class Actor *)" (?CollidedWith@Actor@@QAE_NPAV1@@Z)
-Asteroid.obj : error LNK2019: unresolved external symbol "public: void __thiscall sf::Transformable::move(class sf::Vector2<float> const &)" (?move@Transformable@sf@@QAEXABV?$Vector2@M@2@@Z) referenced in function "public: virtual void __thiscall Asteroid::FrameTime(float)" (?FrameTime@Asteroid@@UAEXM@Z)
-Player.obj : error LNK2001: unresolved external symbol "public: void __thiscall sf::Transformable::move(class sf::Vector2<float> const &)" (?move@Transformable@sf@@QAEXABV?$Vector2@M@2@@Z)
-Projectile.obj : error LNK2001: unresolved external symbol "public: void __thiscall sf::Transformable::move(class sf::Vector2<float> const &)" (?move@Transformable@sf@@QAEXABV?$Vector2@M@2@@Z)
-GameManager.obj : error LNK2019: unresolved external symbol "public: __thiscall sf::Time::Time(void)" (??0Time@sf@@QAE@XZ) referenced in function "public: __thiscall GameManager::GameManager(void)" (??0GameManager@@QAE@XZ)
-GameManager.obj : error LNK2019: unresolved external symbol "public: float __thiscall sf::Time::asSeconds(void)const " (?asSeconds@Time@sf@@QBEMXZ) referenced in function "public: void __thiscall GameManager::RunTime(void)" (?RunTime@GameManager@@QAEXXZ)
-main.obj : error LNK2001: unresolved external symbol "public: float __thiscall sf::Time::asSeconds(void)const " (?asSeconds@Time@sf@@QBEMXZ)
-Player.obj : error LNK2001: unresolved external symbol "public: float __thiscall sf::Time::asSeconds(void)const " (?asSeconds@Time@sf@@QBEMXZ)
-GameManager.obj : error LNK2019: unresolved external symbol "public: __thiscall sf::Clock::Clock(void)" (??0Clock@sf@@QAE@XZ) referenced in function "public: __thiscall GameManager::GameManager(void)" (??0GameManager@@QAE@XZ)
-GameManager.obj : error LNK2019: unresolved external symbol "public: __thiscall sf::String::String(char const *,class std::locale const &)" (??0String@sf@@QAE@PBDABVlocale@std@@@Z) referenced in function "public: __thiscall GameManager::GameManager(void)" (??0GameManager@@QAE@XZ)
-GameManager.obj : error LNK2019: unresolved external symbol "public: __thiscall sf::VideoMode::VideoMode(unsigned int,unsigned int,unsigned int)" (??0VideoMode@sf@@QAE@III@Z) referenced in function "public: __thiscall GameManager::GameManager(void)" (??0GameManager@@QAE@XZ)
-GameManager.obj : error LNK2019: unresolved external symbol "public: void __thiscall sf::Transformable::setPosition(class sf::Vector2<float> const &)" (?setPosition@Transformable@sf@@QAEXABV?$Vector2@M@2@@Z) referenced in function "private: void __thiscall GameManager::SpawnAsteroid(class sf::Vector2<float>,class sf::Vector2<float>)" (?SpawnAsteroid@GameManager@@AAEXV?$Vector2@M@sf@@0@Z)
-Projectile.obj : error LNK2001: unresolved external symbol "public: void __thiscall sf::Transformable::setPosition(class sf::Vector2<float> const &)" (?setPosition@Transformable@sf@@QAEXABV?$Vector2@M@2@@Z)
-GameManager.obj : error LNK2019: unresolved external symbol "public: __thiscall sf::RenderWindow::RenderWindow(class sf::VideoMode,class sf::String const &,unsigned int,struct sf::ContextSettings const &)" (??0RenderWindow@sf@@QAE@VVideoMode@1@ABVString@1@IABUContextSettings@1@@Z) referenced in function "public: __thiscall GameManager::GameManager(void)" (??0GameManager@@QAE@XZ)
-main.obj : error LNK2019: unresolved external symbol "public: class sf::Time __thiscall sf::Clock::restart(void)" (?restart@Clock@sf@@QAE?AVTime@2@XZ) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: bool __thiscall sf::WindowBase::isOpen(void)const " (?isOpen@WindowBase@sf@@QBE_NXZ) referenced in function _main
-Player.obj : error LNK2019: unresolved external symbol "public: class sf::Vector2<float> const & __thiscall sf::Transformable::getPosition(void)const " (?getPosition@Transformable@sf@@QBEABV?$Vector2@M@2@XZ) referenced in function "public: void __thiscall Player::Move(float)" (?Move@Player@@QAEXM@Z)
-Player.obj : error LNK2019: unresolved external symbol "public: float __thiscall sf::Transformable::getRotation(void)const " (?getRotation@Transformable@sf@@QBEMXZ) referenced in function "public: void __thiscall Player::Move(float)" (?Move@Player@@QAEXM@Z)
-Player.obj : error LNK2019: unresolved external symbol "public: void __thiscall sf::Transformable::rotate(float)" (?rotate@Transformable@sf@@QAEXM@Z) referenced in function "public: void __thiscall Player::Rotate(float)" (?Rotate@Player@@QAEXM@Z)
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\\SFML-2.6.1\lib\freetype.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\\SFML-2.6.1\lib\flac.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\\SFML-2.6.1\lib\vorbisenc.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\\SFML-2.6.1\lib\vorbisfile.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\\SFML-2.6.1\lib\vorbis.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\\SFML-2.6.1\lib\ogg.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\\SFML-2.6.1\lib\sfml-graphics-s-d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\\SFML-2.6.1\lib\sfml-window-s-d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\\SFML-2.6.1\lib\sfml-audio-s-d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\\SFML-2.6.1\lib\sfml-network-s-d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Asteroids\\SFML-2.6.1\lib\sfml-system-s-d.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
-F:\FALMOUTH\Random Repos\Asteroids_Prime\Debug\Asteroids.exe : fatal error LNK1120: 20 unresolved externals

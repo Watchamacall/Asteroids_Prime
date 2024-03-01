@@ -6,8 +6,9 @@ class Actor;
 class Player : public Actor
 {
 protected:
-	float MoveSpeed;
-	float RotateSpeed;
+	float MoveSpeed = 10.f;
+	float RotateSpeed = 10.f;
+
 
 public:
 	Player(GameManager* Manager);
