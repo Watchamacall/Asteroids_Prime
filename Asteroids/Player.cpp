@@ -1,39 +1,43 @@
 #include "Actor.h"
 #include "GameManager.h"
 #include "Player.h"
+#include "Asteroid.h"
 
-Player::Player(GameManager* Manager) : Actor(Manager)
+Player::Player(GameManager* Manager, const char* TextureLoc) : Actor(Manager, TextureLoc)
 {
 
 }
 
-void Player::Move(float MoveDirection)
-{
-	if (MoveDirection > 0)
-	{
-		Sprite.move(GameManager::DegreesToVector2f(Sprite.getRotation() * Manager->dt.asSeconds()));
-		//Play Sound
-	}
-
-	if (Sprite.getPosition().x > Manager->Window->getSize().x || Sprite.getPosition().x < 0) //If Player X coords are greater than the WindowSize (Right of Screen) or less than 0 (Left of Screen)
-	{
-		//Wrap around to the other side of the screen, basically if less than 0 then it would be the WindowSize, keeping the y
-	}
-	if (Sprite.getPosition().y > Manager->Window->getSize().y || Sprite.getPosition().y < 0) //If Player Y coords are greater than WindowSize (Bottom of Screen) or less than 0 (Top of screen)
-	{
-		//Wrap around to the other side of the screen, basically if less than 0 then it would be WindowSize, keeping the x
-	}
-}
-
-void Player::Rotate(float RotateAngle)
-{
-	Sprite.rotate(RotateAngle * (RotateSpeed * Manager->dt.asSeconds()));
-}
 
 void Player::Shoot()
 {
 	Projectile* NewProjectile = Manager->Spawn<Projectile>(Sprite.getPosition(), Sprite.getRotation());
+
+	NewProjectile->MoveVector = GameManager::DegreesToVector2f(Sprite.getRotation());
+
+	NewProjectile = nullptr;
 	//Play Sound
+}
+
+void Player::FrameTime(float dt)
+{
+	Actor::FrameTime(dt);
+
+	if (MoveLeft)
+        Sprite.rotate(-RotateSpeed * dt);
+    if (MoveRight)
+        Sprite.rotate(RotateSpeed * dt);
+	if (MoveForward)
+		Move(Sprite.getRotation(), MoveSpeed);
+	if (IsImmune)
+	{
+		if (ImmuneTime >= InvulnerabilityFrames)
+		{
+			IsImmune = false;
+			ImmuneTime = 0;
+		}
+		ImmuneTime += dt;
+	}
 }
 
 void Player::Input(sf::Event InputEvent)
@@ -41,18 +45,29 @@ void Player::Input(sf::Event InputEvent)
 	switch (InputEvent.key.code)
 	{
 	case sf::Keyboard::W:
-		Move(1);
+		MoveForward = InputEvent.type == sf::Event::KeyPressed;
 		break;
 	case sf::Keyboard::A:
-		Rotate(-1);
+		MoveLeft = InputEvent.type == sf::Event::KeyPressed;
 		break;
 	case sf::Keyboard::S:
 		break;
 	case sf::Keyboard::D:
-		Move(1);
+		MoveRight = InputEvent.type == sf::Event::KeyPressed;
 		break;
 	case sf::Keyboard::Space:
-		Shoot();
+		if (InputEvent.type == sf::Event::KeyPressed)
+		{
+			if (ShootOnce)
+				return;
+
+			ShootOnce = true;
+			Shoot();
+		}
+		else if (InputEvent.type == sf::Event::KeyReleased)
+		{
+			ShootOnce = false;
+		}
 		break;
 	default:
 		break;
@@ -61,5 +76,8 @@ void Player::Input(sf::Event InputEvent)
 
 void Player::Hit(Actor* Other)
 {
-
+	if (!dynamic_cast<Asteroid*>(Other))
+		return;
+	if (!IsImmune)
+		Manager->ResetPlayer();
 }

@@ -1,19 +1,2 @@
-﻿  Actor.cpp
-  Asteroid.cpp
-C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\Asteroid.cpp(21,9): error C2027: use of undefined type 'GameManager'
-C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\Asteroid.h(4,7): message : see declaration of 'GameManager'
-  GameManager.cpp
-C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(38,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(111,30): warning C4018: '>': signed/unsigned mismatch
-C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(139,27): error C2226: syntax error: unexpected type 'Asteroid'
-C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(114,45): message : see reference to function template instantiation 'T *GameManager::Spawn<Asteroid>(sf::Vector2f,float)' being compiled
-          with
-          [
-              T=Asteroid
-          ]
-C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(139,27): error C2144: syntax error: 'Asteroid' should be preceded by '('
-C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Asteroids\GameManager.cpp(138,1): error C2143: syntax error: missing ';' before '{'
-  main.cpp
-  Player.cpp
-  Projectile.cpp
-  Generating Code...
+﻿  main.cpp
+  Asteroids.vcxproj -> C:\Users\ryanc\Documents\Falmouth University\General Repos\Asteroids\Debug\Asteroids.exe
