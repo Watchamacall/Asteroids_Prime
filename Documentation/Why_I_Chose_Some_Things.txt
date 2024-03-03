@@ -1,0 +1,11 @@
+Class Structure:
+Throughout the development of the project, I used an inheritance system like how Unreal functions in order to maximise the code cleanliness and efficiency. By having the Player, Asteroid and Projectiles inherit from a base class called Actor, I can use the base class to accomplish a lot and inherit that to the other classes, allowing for it to be expanded upon very easily allowing for flexibility with adding more gameplay mechanics to the game.
+Commenting:
+The commenting style I decided to use for this project was XML. I chose this due to it being one of the best commenting styles I have used and has functionality built into Visual Studio to show the comments when using Intellisense. This also has the added benefit of allowing others to look through and see how I coded the game and expand upon it where they want to.
+Why I chose to use a GameManager:
+A strong reason as to why I chose to use a GameManager for this project was due to the robustness it would give me to expand the game where needed, maybe adding more states to the game for example.
+Why Enums for the Game States
+This choice was made with regards to allowing for easier direction of expandability, it is a lot easier to see a switch statement leading to different parts of the game than it is to having if statements leading away from the same function. This is part of the reason why everything has it’s own function like the Runtime function being present in the Running part of the Game States
+Why is collision coded the way it is?
+With this project being small and not having too many Actors on the screen at once, I chose to use the nested for statement to allow for a quick and easy implementation of the collision code. If this project were using a lot more Actors, this use a whole lot more CPU Cycles and I would choose a different way of notifying collisions such as using an Event based system so save on the CPU Cycles.
+
