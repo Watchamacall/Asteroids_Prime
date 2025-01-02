@@ -1,21 +1,21 @@
 #include <SFML/Graphics.hpp>
-
+#include "Actor.h"
+#include "Player.h"
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 800), "LHG Code Exercise");
+    sf::RenderWindow window(sf::VideoMode(800, 800), "Asteroids Exercise");
+
     sf::Clock GameClock;
 
     // Grab textures and set up sprites
-    sf::Texture PlayerTexture;
     sf::Texture AsteroidTexture;
 
-    PlayerTexture.loadFromFile("Assets/Ship.png");
     AsteroidTexture.loadFromFile("Assets/Asteroid.png");
 
-    sf::Sprite Player;
-    Player.setTexture(PlayerTexture);
     sf::Sprite Asteroid;
     Asteroid.setTexture(AsteroidTexture);
+
+    std::shared_ptr<APlayer> player = std::make_shared<APlayer>("Assets/Ship.png", "Player");
 
     while (window.isOpen())
     {
@@ -24,6 +24,7 @@ int main()
 
         // Poll for window being closed
         sf::Event event;
+
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
@@ -47,13 +48,17 @@ int main()
         * -	When an asteroid is destroyed it splits into two smaller ones. This split happens twice (large->medium->small). The smallest asteroids do not split when destroyed
         * - Add One or Two new Features
         */
+
+        
         //-----------------------------------------------------------------------------------
         // Game logic can go here
 
         // Player ship follows the mouse
         sf::Vector2f MousePosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
-        Player.setPosition(MousePosition.x, MousePosition.y);
-        window.draw(Player);
+
+        player->Move(MousePosition);
+        
+        window.draw(player->GetSprite());
 
         // Asteroid spins in the center of the screen
         Asteroid.setPosition(400, 400);
