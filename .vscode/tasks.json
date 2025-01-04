@@ -7,9 +7,9 @@
       "command": "g++",
       "args": [
         "-g",
-        "${workspaceFolder}/*.cpp",
+        "${workspaceFolder}/Asteroids/*.cpp",
         "-o",
-        "${workspaceFolder}/build/main",
+        "${workspaceFolder}/Asteroids/build/main",
         "-I",
         "Asteroids/SFML-2.6.1/include",
         "-L",
@@ -22,7 +22,9 @@
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher": ["$gcc"]
+      "problemMatcher": [
+        "$gcc"
+      ]
     }
   ]
 }

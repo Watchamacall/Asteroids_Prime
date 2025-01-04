@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/Watchamacall/Documents/GitHub/Asteroids_Prime/Asteroids",
-      "program": "/home/Watchamacall/Documents/GitHub/Asteroids_Prime/Asteroids/build/Debug/outDebug",
+      "cwd": "${workspaceFolder}/Asteroids",
+      "program": "${workspaceFolder}/Asteroids/build/main",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
