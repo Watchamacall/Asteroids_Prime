@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\KeyBindings.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\KeyBindings.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\KeyBindings.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\KeyBindings.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\PlayerController.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\PlayerController.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\VoidDelegate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\VoidDelegate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\GameManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\GameManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Actor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -15,20 +39,8 @@
       "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Actor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\Actor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\GameManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2151193D-E9D0-4C06-8F72-D018BCE7DD7B}|Asteroids\\Asteroids.vcxproj|solutionrelative:Asteroids\\GameManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,43 +50,56 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Player.cpp",
-              "DocumentMoniker": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Player.cpp",
-              "RelativeDocumentMoniker": "Asteroids\\Player.cpp",
-              "ToolTip": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Player.cpp",
-              "RelativeToolTip": "Asteroids\\Player.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-02T15:53:13.784Z",
+              "DocumentIndex": 5,
+              "Title": "VoidDelegate.h",
+              "DocumentMoniker": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\VoidDelegate.h",
+              "RelativeDocumentMoniker": "Asteroids\\VoidDelegate.h",
+              "ToolTip": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\VoidDelegate.h",
+              "RelativeToolTip": "Asteroids\\VoidDelegate.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-04T13:48:38.097Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "KeyBindings.h",
+              "DocumentMoniker": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\KeyBindings.h",
+              "RelativeDocumentMoniker": "Asteroids\\KeyBindings.h",
+              "ToolTip": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\KeyBindings.h",
+              "RelativeToolTip": "Asteroids\\KeyBindings.h",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABwAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-04T13:39:08.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "PlayerController.h",
               "DocumentMoniker": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\PlayerController.h",
               "RelativeDocumentMoniker": "Asteroids\\PlayerController.h",
               "ToolTip": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\PlayerController.h",
               "RelativeToolTip": "Asteroids\\PlayerController.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-02T15:38:33.473Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Player.h",
               "DocumentMoniker": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Player.h",
               "RelativeDocumentMoniker": "Asteroids\\Player.h",
               "ToolTip": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Player.h",
               "RelativeToolTip": "Asteroids\\Player.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAgAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-02T15:38:17.189Z",
               "EditorCaption": ""
@@ -94,7 +119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "Actor.h",
               "DocumentMoniker": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Actor.h",
               "RelativeDocumentMoniker": "Asteroids\\Actor.h",
@@ -102,31 +127,56 @@
               "RelativeToolTip": "Asteroids\\Actor.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-01T20:20:30.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-01T20:20:30.691Z"
             }
           ]
         },
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "KeyBindings.cpp",
+              "DocumentMoniker": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\KeyBindings.cpp",
+              "RelativeDocumentMoniker": "Asteroids\\KeyBindings.cpp",
+              "ToolTip": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\KeyBindings.cpp",
+              "RelativeToolTip": "Asteroids\\KeyBindings.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-04T14:04:42.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Player.cpp",
+              "RelativeDocumentMoniker": "Asteroids\\Player.cpp",
+              "ToolTip": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Player.cpp",
+              "RelativeToolTip": "Asteroids\\Player.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-02T15:53:13.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Actor.cpp",
               "DocumentMoniker": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Actor.cpp",
               "RelativeDocumentMoniker": "Asteroids\\Actor.cpp",
               "ToolTip": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\Actor.cpp",
               "RelativeToolTip": "Asteroids\\Actor.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-01T20:19:27.12Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "main.cpp",
               "DocumentMoniker": "D:\\FALMOUTH\\Random Repos\\Asteroids_Prime\\Asteroids\\main.cpp",
               "RelativeDocumentMoniker": "Asteroids\\main.cpp",
@@ -134,8 +184,7 @@
               "RelativeToolTip": "Asteroids\\main.cpp",
               "ViewState": "AQIAAAUAAAAAAAAAAAAAABIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-01T20:20:25.904Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-01T20:20:25.904Z"
             }
           ]
         }
