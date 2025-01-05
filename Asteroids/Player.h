@@ -5,13 +5,15 @@ class APlayer :
     public Actor
 {
 
-protected:
-    std::shared_ptr<KeyBindings> bindings;
-
 public:
     APlayer(const std::string& textureLocation, const std::string& actorName);
-    PlayerController controller;
+    
+    virtual void FrameCall(float dt) override;
+    
+protected:
+    std::unique_ptr<PlayerController> controller;
 
+public:
     void Move(sf::Vector2f newPosition);
 };
 

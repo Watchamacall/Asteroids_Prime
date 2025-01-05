@@ -12,7 +12,10 @@ protected:
 	std::string name;
 public:
 	Actor(const std::string& textureLocation, const std::string& actorName);
+	virtual ~Actor() = default;
 
+	virtual void FrameCall(float dt);
+	
 	sf::Texture const GetTexture() { return texture; }
 	sf::Sprite const GetSprite() { return sprite; }
 	sf::FloatRect const GetCollider() { return collider; }

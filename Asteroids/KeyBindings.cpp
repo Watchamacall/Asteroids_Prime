@@ -6,7 +6,7 @@ void KeyBindings::AddKeyBinding(const std::string& keyName, char key)
 	keyBindings[key] = keyName;
 }
 
-void KeyBindings::AddDelegateToKeyBinding(const std::string& keyName, const std::function<void>& delegate)
+void KeyBindings::AddDelegateToKeyBinding(const std::string& keyName, const VoidDelegate& delegate)
 {
 	//pushes back the delegate ready for calling
 	actionToDelegate[keyName].push_back(delegate);
@@ -18,7 +18,7 @@ void KeyBindings::HandleInput(char key)
 	{
 		if (actionToDelegate.find(keyBindings[key]) != actionToDelegate.end())
 		{
-			for (const VoidDelegate& aDelegate : actionToDelegate[keyBindings[key]])
+			for (VoidDelegate& aDelegate : actionToDelegate[keyBindings[key]])
 			{
 				aDelegate();
 			}

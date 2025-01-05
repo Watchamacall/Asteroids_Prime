@@ -1,5 +1,5 @@
 #pragma once
-#define VoidDelegate std::function<void>
+#define VoidDelegate std::function<void()>
 
 #include <string>
 #include <map>
@@ -26,7 +26,7 @@ private:
 public:
 	void AddKeyBinding(const std::string& keyName, char key);
 
-	void AddDelegateToKeyBinding(const std::string& keyName, const std::function<void>& delegate);
+	void AddDelegateToKeyBinding(const std::string& keyName, const VoidDelegate& delegate);
 
 	void HandleInput(char key);
 };

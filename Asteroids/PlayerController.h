@@ -1,5 +1,6 @@
 #pragma once
 #include <functional>
+#include <iostream>
 #include "KeyBindings.h"
 
 /*
@@ -7,8 +8,14 @@
 */
 class PlayerController
 {
-protected:
-	KeyBindings bindings;
+public:
+	PlayerController();
 
+	virtual void FrameCall(float dt);
+protected:
+	std::unique_ptr<KeyBindings> bindings;
+
+public:
+	void PrintString();
 };
 

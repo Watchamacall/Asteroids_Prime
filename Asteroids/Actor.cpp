@@ -11,6 +11,10 @@ Actor::Actor(const std::string& textureLocation, const std::string& actorName)
 	collider = sprite.getGlobalBounds();
 }
 
+void Actor::FrameCall(float dt)
+{
+}
+
 void Actor::SetTexture(std::string textureLocation)
 {
 	texture.loadFromFile(textureLocation);
