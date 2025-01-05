@@ -3,6 +3,7 @@
 #include "Actor.h"
 #include "ActorManager.h"
 #include "AsteroidMSpawner.h"
+#include "KeyboardHandle.h"
 #include <memory>
 
 enum GameState : int8_t
@@ -32,14 +33,26 @@ public:
 	*/
 	GameManager(const int windowWidth, const int windowHeight, std::string windowTitle);
 
+	static GameManager& GetInstance()
+	{
+		static GameManager instance;
+		return instance;
+	}
+
+	GameManager(const GameManager&) = delete;
+
 protected:
 	sf::Clock gameClock;
+	sf::Clock deltaClock;
 	std::unique_ptr<sf::RenderWindow> gameWindow;
 	GameState gameState;
-	sf::Time dt;
+	float dt;
 
 	std::unique_ptr<ActorManager> actorManager;
 	std::unique_ptr<AsteroidMSpawner> aMasterSpawner;
+	std::unique_ptr<KeyboardHandle> kHandle;
+
+	std::unique_ptr<VoidDelegate> frameCallDelegate;
 
 public:
 	/*
@@ -48,9 +61,19 @@ public:
 	const ActorManager* GetActorManager() { return actorManager.get(); }
 
 	/*
+	* Returns the keybindings associated with the KeyboardHandle
+	*/
+	KeyBindings* GetKeybindings() { return kHandle->GetKeyBindings(); }
+	
+	/*
+	* Returns the FrameCallDelegate
+	*/
+	VoidDelegate* GetFrameCallDelegate() { return frameCallDelegate.get(); }
+	
+	/*
 	* Returns the Delta Time in Seconds.
 	*/
-	float GetDeltaTime() { return dt.asSeconds(); };
+	float GetDeltaTime() { return deltaClock.getElapsedTime().asSeconds(); };
 
 	/*
 	* Initialises game runtime

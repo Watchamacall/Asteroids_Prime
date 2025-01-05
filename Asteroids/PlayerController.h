@@ -2,6 +2,7 @@
 #include <functional>
 #include <iostream>
 #include "KeyBindings.h"
+#include "GameManager.h"
 
 /*
 * Handles all inputs for the Player and moves accordingly
@@ -13,7 +14,7 @@ public:
 
 	virtual void FrameCall(float dt);
 protected:
-	std::unique_ptr<KeyBindings> bindings;
+	KeyBindings* bindings;
 
 public:
 	void PrintString();

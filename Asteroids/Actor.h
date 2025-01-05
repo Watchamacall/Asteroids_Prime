@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+class GameManager;
+
 class Actor
 {
 public:
@@ -40,6 +42,9 @@ public:
 	*/
 	void SetPosition(const sf::Vector2f& newPosition);
 
+	void Translate(float x, float y);
+
+	void Translate(const sf::Vector2f& moveVector);
 	/*
 	* Sets the rotation of the Actor
  	*/
