@@ -1,4 +1,6 @@
-﻿  Player.cpp
+﻿  ActorManager.cpp
+  GameManager.cpp
   main.cpp
+  VoidDelegate.cpp
   Generating Code...
   Asteroids.vcxproj -> D:\FALMOUTH\Random Repos\Asteroids_Prime\Debug\Asteroids.exe

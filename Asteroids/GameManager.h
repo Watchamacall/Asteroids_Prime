@@ -2,6 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include "Actor.h"
 #include "ActorManager.h"
+#include "AsteroidMSpawner.h"
 #include <memory>
 
 enum GameState : int8_t
@@ -27,7 +28,7 @@ public:
 	GameManager(const int windowWidth, const int windowHeight) : GameManager(windowWidth, windowHeight, "Asteroids Example") {};
 
 	/*
-	* Create a GameManager with both a Window Size and a custom Title
+	* Create a GameManager with both a Window Size and a custom title
 	*/
 	GameManager(const int windowWidth, const int windowHeight, std::string windowTitle);
 
@@ -38,8 +39,14 @@ protected:
 	sf::Time dt;
 
 	std::unique_ptr<ActorManager> actorManager;
+	std::unique_ptr<AsteroidMSpawner> aMasterSpawner;
 
 public:
+	/*
+	* Returns the Actor Manager
+	*/
+	const ActorManager* GetActorManager() { return actorManager.get(); }
+
 	/*
 	* Returns the Delta Time in Seconds.
 	*/
@@ -49,9 +56,5 @@ public:
 	* Initialises game runtime
 	*/
 	void InitialiseGame();
-
-	//TEMPORARY TESTING
-	void FrameCall();
-
 };
 

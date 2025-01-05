@@ -11,9 +11,16 @@ protected:
 	sf::FloatRect collider;
 	std::string name;
 public:
-	Actor(const std::string& textureLocation, const std::string& actorName);
+	/*
+	* IMPROVAL:
+	* Change the constructor to have a basic shape
+	*/
+	Actor(const std::string& actorName, const std::string& textureLocation);
 	virtual ~Actor() = default;
 
+	/*
+	*  Called every frame
+	*/
 	virtual void FrameCall(float dt);
 	
 	sf::Texture const GetTexture() { return texture; }
@@ -23,5 +30,24 @@ public:
 	
 	void SetTexture(std::string textureLocation);
 	void SetTexture(sf::Image image);
+
+	/*
+	* Sets the position of the Actor
+	*/
+	void SetPosition(float x, float y);
+	/*
+	* Sets the position of the Actor
+	*/
+	void SetPosition(const sf::Vector2f& newPosition);
+
+	/*
+	* Sets the rotation of the Actor
+ 	*/
+	void SetRotation(float angle);
+
+	/*
+	* Rotates the Actor around angle
+	*/
+	void Rotate(float angle);
 };
 

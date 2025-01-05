@@ -12,7 +12,7 @@ public:
     * Creates an Actor of type T and returns it
     */
 	template <typename T> 
-    T* createNewActor(const char* actorName, const char* textureLocation)
+    T* CreateNewActor(const char* actorName, const char* textureLocation)
     {
         static_assert(std::is_base_of<Actor, T>::value, "T must be derived from Actor");
 

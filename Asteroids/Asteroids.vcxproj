@@ -81,6 +81,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="ActorManager.cpp" />
+    <ClCompile Include="Asteroid.cpp" />
+    <ClCompile Include="AsteroidMSpawner.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="KeyBindings.cpp" />
     <ClCompile Include="main.cpp" />
@@ -90,6 +93,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="ActorManager.h" />
+    <ClInclude Include="Asteroid.h" />
+    <ClInclude Include="AsteroidMSpawner.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="KeyBindings.h" />
     <ClInclude Include="Player.h" />

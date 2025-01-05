@@ -33,6 +33,15 @@
     <ClCompile Include="KeyBindings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Asteroid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AsteroidMSpawner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="VoidDelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,6 +60,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KeyBindings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Asteroid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AsteroidMSpawner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VoidDelegate.h">

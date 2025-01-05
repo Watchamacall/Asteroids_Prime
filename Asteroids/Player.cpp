@@ -9,8 +9,3 @@ void APlayer::FrameCall(float dt)
 {
 	controller->FrameCall(dt);
 }
-
-void APlayer::Move(sf::Vector2f newPosition)
-{
-	sprite.setPosition(newPosition);
-}

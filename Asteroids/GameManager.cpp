@@ -1,6 +1,6 @@
 #include "GameManager.h"
 #include "Player.h"
-
+#include "Asteroid.h"
 
 
 GameManager::GameManager(const int windowWidth, const int windowHeight, std::string windowTitle)
@@ -12,22 +12,17 @@ GameManager::GameManager(const int windowWidth, const int windowHeight, std::str
 
 void GameManager::InitialiseGame()
 {
-    APlayer* player = actorManager->createNewActor<APlayer>("Assets/Ship.png", "Player"); //We lose this pointer once this is over (Not good, but unique_ptr allows for smartness)
-
+    APlayer* player = actorManager->CreateNewActor<APlayer>("Player", "Assets/Ship.png");
     
-    sf::Texture AsteroidTexture;
-
-    AsteroidTexture.loadFromFile("Assets/Asteroid.png");
-
-    sf::Sprite Asteroid;
-    Asteroid.setTexture(AsteroidTexture);
+    AAsteroid* Asteroid = actorManager->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png");
 
     while (gameWindow->isOpen())
     {
-        // Get the delta time for the game update
-        sf::Time dt = gameClock.restart(); //Add a clamped dt for actual frametime
-        
-        FrameCall();
+        dt = gameClock.restart();
+        if (gameClock.getElapsedTime().asSeconds() >= 1.f)
+        {
+            dt = gameClock.restart();
+        }
         
         // Poll for window being closed
         sf::Event event;
@@ -45,22 +40,17 @@ void GameManager::InitialiseGame()
 
         sf::Vector2f MousePosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(*gameWindow));
 
-        player->Move(MousePosition);
+        player->SetPosition(MousePosition);
         
         gameWindow->draw(player->GetSprite());
 
         // Asteroid spins in the center of the screen
-        Asteroid.setPosition(400, 400);
+        Asteroid->SetPosition(400, 400);
         float Rotation = 90.0f;
-        Asteroid.rotate(Rotation * dt.asSeconds());
-        gameWindow->draw(Asteroid);
+        Asteroid->Rotate(Rotation * dt.asSeconds());
+        gameWindow->draw(Asteroid->GetSprite());
 
         gameWindow->display();
     }
     
-}
-
-void GameManager::FrameCall()
-{
-    actorManager->FrameCall(dt.asSeconds());
 }
