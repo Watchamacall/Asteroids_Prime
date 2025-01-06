@@ -7,6 +7,13 @@
 #include <functional>
 #include <memory>
 #include "VoidDelegate.h"
+
+enum KeySection
+{
+	KEY_RELEASED = 0,
+	KEY_PRESSED = 1,
+};
+
 class KeyBindings
 {
 protected:

@@ -4,19 +4,24 @@
 #include "KeyBindings.h"
 #include "GameManager.h"
 
+class APlayer;
+
 /*
 * Handles all inputs for the Player and moves accordingly
 */
 class PlayerController
 {
 public:
-	PlayerController();
+	PlayerController(Actor* actorToControl);
 
 	virtual void FrameCall(float dt);
+
 protected:
 	KeyBindings* bindings;
+	Actor* controllingActor;
+	float forwardSpeed = 20000.f;
 
 public:
-	void PrintString();
+	void MoveCharacter();
 };
 

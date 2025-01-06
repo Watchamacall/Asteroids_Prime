@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Asteroid.h"
 
+std::unique_ptr<GameManager> GameManager::instance = nullptr;
 
 GameManager::GameManager(const int windowWidth, const int windowHeight, std::string windowTitle)
 {
@@ -17,55 +18,41 @@ GameManager::GameManager(const int windowWidth, const int windowHeight, std::str
 void GameManager::InitialiseGame()
 {
     APlayer* player = actorManager->CreateNewActor<APlayer>("Player", "Assets/Ship.png");
+
+    //Start player in middle of screen
+    sf::Vector2u windowSize = gameWindow->getSize();
+    player->SetPosition(sf::Vector2f(windowSize.x / 2, windowSize.y / 2));
     
     AAsteroid* Asteroid = actorManager->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png");
 
     while (gameWindow->isOpen())
     {
         deltaClock.restart(); //Delta Time
-
         sf::Event event;
-
-        //Frame Time Check
-        if (gameClock.getElapsedTime().asSeconds() >= 1.f)
+        while (gameWindow->pollEvent(event))
         {
-            while (gameWindow->pollEvent(event))
+            if (event.type == sf::Event::Closed)
             {
-                if (event.type == sf::Event::Closed)
-                {
-                    gameWindow->close();
-                }
-                kHandle->CheckInputs(event);
+                gameWindow->close();
             }
-
-            frameCallDelegate->Execute();
-
-            gameClock.restart(); //Reset our Frame Time
+            kHandle->CheckInputs(event);
         }
-        else
-        {
-            while (gameWindow->pollEvent(event))
-            {
-                if (event.type == sf::Event::Closed)
-                    gameWindow->close();
-            }
-        }
-        
+
+        frameCallDelegate->Execute();
+
+        gameClock.restart(); //Reset our Frame Time
+    
         // Reset the window
         gameWindow->clear();
 
         //GAME LOGIC THINGS HERE
-
-        sf::Vector2f MousePosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(*gameWindow));
-
-        player->SetPosition(MousePosition);
         
         gameWindow->draw(player->GetSprite());
 
         // Asteroid spins in the center of the screen
         Asteroid->SetPosition(400, 400);
         float Rotation = 90.0f;
-        Asteroid->Rotate(Rotation * deltaClock.getElapsedTime().asSeconds());
+        Asteroid->Rotate(Rotation * GetDeltaTime());
         gameWindow->draw(Asteroid->GetSprite());
 
         gameWindow->display();

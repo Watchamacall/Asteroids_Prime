@@ -16,30 +16,30 @@ class APlayer;
 
 class GameManager
 {
-public:
+private:
 
-	/*
-	* Create a basic GameManager
-	*/
-	GameManager() : GameManager(800, 600) {};
-
-	/*
-	* Create a GameManager with a certain windowSize but default title
-	*/
-	GameManager(const int windowWidth, const int windowHeight) : GameManager(windowWidth, windowHeight, "Asteroids Example") {};
+	static std::unique_ptr<GameManager> instance;
 
 	/*
 	* Create a GameManager with both a Window Size and a custom title
 	*/
 	GameManager(const int windowWidth, const int windowHeight, std::string windowTitle);
 
-	static GameManager& GetInstance()
+public:
+
+	static GameManager& GetInstance(const int windowWidth = 800, const int windowHeight = 600, std::string windowTitle = "Asteroids Example")
 	{
-		static GameManager instance;
-		return instance;
+		if (!instance)
+		{
+			instance = std::unique_ptr<GameManager>(new GameManager(windowWidth, windowHeight, windowTitle));
+		}
+		
+		return *instance;
 	}
 
+	//Stop another instance of GameManager from existing
 	GameManager(const GameManager&) = delete;
+	GameManager operator=(const GameManager&) = delete;
 
 protected:
 	sf::Clock gameClock;
@@ -53,7 +53,6 @@ protected:
 	std::unique_ptr<KeyboardHandle> kHandle;
 
 	std::unique_ptr<VoidDelegate> frameCallDelegate;
-
 public:
 	/*
 	* Returns the Actor Manager

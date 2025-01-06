@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <math.h>
 
 class GameManager;
 
@@ -30,6 +31,13 @@ public:
 	sf::FloatRect const GetCollider() { return collider; }
 	std::string const GetName() { return name; }
 	
+	sf::Vector2f const GetPosition() { return sprite.getPosition(); }
+
+	sf::Vector2f const GetForwardVector();
+	
+	sf::Vector2f const GetRightVector();
+
+
 	void SetTexture(std::string textureLocation);
 	void SetTexture(sf::Image image);
 

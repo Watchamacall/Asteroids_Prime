@@ -23,9 +23,7 @@ int main()
 
 
     //Initalise GameManager
-    std::unique_ptr<GameManager> gameManager = std::make_unique<GameManager>();
-
-    gameManager->InitialiseGame();
+    GameManager::GetInstance().InitialiseGame();
 
     // ------------ ANYTHING BELOW CAN BE FOUND IN GAMEMANAGER -------------------//
     //sf::RenderWindow window(sf::VideoMode(800, 800), "Asteroids Exercise"); //REMOVE

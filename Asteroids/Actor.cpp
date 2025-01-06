@@ -19,6 +19,26 @@ void Actor::FrameCall(float dt)
 	
 }
 
+sf::Vector2f const Actor::GetForwardVector()
+{
+	float radians = sprite.getRotation() * (M_PI / 180.f);
+
+	float forwardX = std::cos(radians);
+	float forwardY = std::sin(radians);
+    return sf::Vector2f(forwardX, forwardY);
+}
+
+sf::Vector2f const Actor::GetRightVector() 
+{
+    float rotationDegrees = sprite.getRotation();
+    float rotationRadians = rotationDegrees * (M_PI / 180.0f);
+
+    float rightX = std::sin(rotationRadians);
+    float rightY = -std::cos(rotationRadians);
+
+    return sf::Vector2f(rightX, rightY);
+}
+
 void Actor::SetTexture(std::string textureLocation)
 {
 	texture.loadFromFile(textureLocation);
