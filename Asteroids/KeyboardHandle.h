@@ -2,6 +2,7 @@
 #include <functional>
 #include "SFML/Graphics.hpp"
 #include "KeyBindings.h"
+#include "iostream"
 
 class KeyboardHandle
 {
@@ -12,7 +13,7 @@ protected:
     std::unique_ptr<KeyBindings> bindings;
 
 public:
-    void CheckInputs(sf::Event eventPoll);
+    void CheckInputs();
 
     KeyBindings* GetKeyBindings() { return bindings.get(); }
 };

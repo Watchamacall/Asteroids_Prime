@@ -10,8 +10,6 @@ Actor::Actor(const std::string& actorName, const std::string& textureLocation)
 	}
 	sprite.setTexture(texture);
 	collider = sprite.getGlobalBounds();
-
-	GameManager::GetInstance().GetFrameCallDelegate()->AddVoidDelegate([this] {FrameCall(GameManager::GetInstance().GetDeltaTime());});
 }
 
 void Actor::FrameCall(float dt)
@@ -19,7 +17,7 @@ void Actor::FrameCall(float dt)
 	
 }
 
-sf::Vector2f const Actor::GetForwardVector()
+sf::Vector2f const Actor::GetRightVector()
 {
 	float radians = sprite.getRotation() * (M_PI / 180.f);
 
@@ -28,7 +26,7 @@ sf::Vector2f const Actor::GetForwardVector()
     return sf::Vector2f(forwardX, forwardY);
 }
 
-sf::Vector2f const Actor::GetRightVector() 
+sf::Vector2f const Actor::GetForwardVector() 
 {
     float rotationDegrees = sprite.getRotation();
     float rotationRadians = rotationDegrees * (M_PI / 180.0f);
@@ -80,4 +78,9 @@ void Actor::SetRotation(float angle)
 void Actor::Rotate(float angle)
 {
 	sprite.rotate(angle);
+}
+
+void Actor::DestroyActor()
+{
+	GameManager::GetInstance().GetActorManager()->destroyActor(*this);
 }

@@ -33,6 +33,8 @@ public:
 	
 	sf::Vector2f const GetPosition() { return sprite.getPosition(); }
 
+	float const GetRotation() { return sprite.getRotation(); }
+
 	sf::Vector2f const GetForwardVector();
 	
 	sf::Vector2f const GetRightVector();
@@ -62,5 +64,10 @@ public:
 	* Rotates the Actor around angle
 	*/
 	void Rotate(float angle);
+
+	/*
+	* Destroys this Actor
+	*/
+	void DestroyActor();
 };
 

@@ -1,37 +1,44 @@
 #include "KeyBindings.h"
 
-void KeyBindings::AddKeyBinding(const std::string& keyName, sf::Keyboard::Key key)
+InputListener* KeyBindings::CreateNewInput(const std::string& inputName, const sf::Keyboard::Key& listenKey)
 {
-	//Adds the char as the key to the Binding Name
-	keyBindings[key] = keyName;
+	std::unique_ptr<InputListener> newInput = std::make_unique<InputListener>(listenKey, inputName);
+	InputListener* returnPtr = newInput.get();
+	inputs.push_back(std::move(newInput));
+	return returnPtr;
+}
+
+void KeyBindings::KeyCheck()
+{
+	for (auto& input : inputs)
+	{
+		sf::Keyboard::Key key = input->GetKeyboardInput();
+		bool curInput = sf::Keyboard::isKeyPressed(key);
+
+		if (curInput && !prevKeyState[key])
+			input->ExecuteOnPressed();
+		else if (curInput && prevKeyState[key])
+		{
+			input->ExecuteOnHeld();
+		}
+		else if (!curInput && prevKeyState[key])
+			input->ExecuteOnReleased();
+
+		prevKeyState[key] = curInput;
+	}
+
 	
 }
 
-void KeyBindings::AddDelegateToKeyBinding(const std::string& keyName, const std::function<void()>& delegate)
+InputListener* KeyBindings::GetInput(std::string name)
 {
-	//pushes back the delegate ready for calling
-	pressedDelegate[keyName].AddVoidDelegate(delegate);
-}
-
-void KeyBindings::HandleInput(sf::Keyboard::Key key)
-{
-	if (keyBindings.find(key) != keyBindings.end())
+	for (auto& input : inputs)
 	{
-		if (pressedDelegate.find(keyBindings[key]) != pressedDelegate.end())
+		if (input->GetInputName() == name)
 		{
-			pressedDelegate[keyBindings[key]].Execute();
+			return input.get();
 		}
 	}
-}
-
-std::vector<sf::Keyboard::Key> KeyBindings::GetKeys()
-{
-	std::vector<sf::Keyboard::Key> returnArray;
-
-	for (auto& s : keyBindings)
-	{
-		returnArray.push_back(s.first);
-	}
 	
-    return returnArray;
+    return nullptr;
 }

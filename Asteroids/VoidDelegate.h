@@ -13,6 +13,8 @@ public:
 	*/
 	void AddVoidDelegate(std::function<void()> delegateToAdd);
 
+	void RemoveVoidDelegate(int elementNumber);
+
 	/*
 	* Executes all delegates
 	*/

@@ -12,7 +12,6 @@ GameManager::GameManager(const int windowWidth, const int windowHeight, std::str
 
     kHandle = std::make_unique<KeyboardHandle>();
 
-    frameCallDelegate = std::make_unique<VoidDelegate>();
 }
 
 void GameManager::InitialiseGame()
@@ -23,11 +22,11 @@ void GameManager::InitialiseGame()
     sf::Vector2u windowSize = gameWindow->getSize();
     player->SetPosition(sf::Vector2f(windowSize.x / 2, windowSize.y / 2));
     
+    //TESTING ASTEROID
     AAsteroid* Asteroid = actorManager->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png");
 
     while (gameWindow->isOpen())
     {
-        deltaClock.restart(); //Delta Time
         sf::Event event;
         while (gameWindow->pollEvent(event))
         {
@@ -35,25 +34,24 @@ void GameManager::InitialiseGame()
             {
                 gameWindow->close();
             }
-            kHandle->CheckInputs(event);
         }
 
-        frameCallDelegate->Execute();
+        kHandle->CheckInputs();
 
-        gameClock.restart(); //Reset our Frame Time
-    
+        dt = deltaClock.restart().asSeconds(); //Delta Time
+
+        actorManager->FrameCall(dt);
+            
         // Reset the window
         gameWindow->clear();
-
-        //GAME LOGIC THINGS HERE
-        
-        gameWindow->draw(player->GetSprite());
 
         // Asteroid spins in the center of the screen
         Asteroid->SetPosition(400, 400);
         float Rotation = 90.0f;
         Asteroid->Rotate(Rotation * GetDeltaTime());
         gameWindow->draw(Asteroid->GetSprite());
+
+        actorManager->DrawActors(gameWindow.get());
 
         gameWindow->display();
     }

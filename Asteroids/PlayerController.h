@@ -2,6 +2,8 @@
 #include <functional>
 #include <iostream>
 #include "KeyBindings.h"
+#include "InputListener.h"
+#include "Projectile.h"
 #include "GameManager.h"
 
 class APlayer;
@@ -19,9 +21,22 @@ public:
 protected:
 	KeyBindings* bindings;
 	Actor* controllingActor;
-	float forwardSpeed = 20000.f;
+	float forwardSpeed = 500.f;
+	float rotationSpeed = 250.f;
 
+	InputListener* forward = nullptr;
+	InputListener* backward = nullptr;
+	InputListener* right = nullptr;
+	InputListener* left = nullptr;
+	InputListener* shoot = nullptr;
+	
 public:
-	void MoveCharacter();
+	void MoveCharacter(float moveDirection);
+
+	void RotateCharacter(float rotationDirection);
+
+	void WrapCheck();
+
+	void ShootProjectile();
 };
 

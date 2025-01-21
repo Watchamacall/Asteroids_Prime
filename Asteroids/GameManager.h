@@ -52,27 +52,31 @@ protected:
 	std::unique_ptr<AsteroidMSpawner> aMasterSpawner;
 	std::unique_ptr<KeyboardHandle> kHandle;
 
-	std::unique_ptr<VoidDelegate> frameCallDelegate;
 public:
 	/*
-	* Returns the Actor Manager
+	* const ActorManager
 	*/
-	const ActorManager* GetActorManager() { return actorManager.get(); }
+	const ActorManager* GetActorManager() const { return actorManager.get(); }
+
+	/*
+	* non-const ActorManager
+	*/
+	ActorManager* GetActorManager() { return actorManager.get(); }
 
 	/*
 	* Returns the keybindings associated with the KeyboardHandle
 	*/
 	KeyBindings* GetKeybindings() { return kHandle->GetKeyBindings(); }
-	
-	/*
-	* Returns the FrameCallDelegate
-	*/
-	VoidDelegate* GetFrameCallDelegate() { return frameCallDelegate.get(); }
-	
+
 	/*
 	* Returns the Delta Time in Seconds.
 	*/
-	float GetDeltaTime() { return deltaClock.getElapsedTime().asSeconds(); };
+	float GetDeltaTime() { return dt; };
+
+	/*
+	* Returns the size of the Game Window
+	*/
+	sf::Vector2u GetWindowSize() { return gameWindow->getSize(); }
 
 	/*
 	* Initialises game runtime
