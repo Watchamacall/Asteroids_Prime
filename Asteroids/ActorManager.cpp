@@ -45,12 +45,25 @@ bool ActorManager::NameExists(std::string name)
 
 void ActorManager::FrameCall(float dt)
 {
-    for (auto& singActor : allActors)
+    for (size_t i = 0; i < std::size(allActors); i++)
     {
-        if (singActor.get() != nullptr)
+        if (allActors[i].get() != nullptr)
         {
-            std::cout << "Actor Called: " << singActor->GetName() << std::endl;
-            singActor->FrameCall(dt);
-        }
+            allActors[i]->FrameCall(dt);
+            
+            //COLLISION CHECK
+            for (size_t j = i+1; j < std::size(allActors); j++)
+            {
+                //Complete i to j
+                allActors[i]->TryCollision(allActors[j].get());
+
+                //If i and j are not destroyed that frame
+                if (allActors[i].get() != nullptr && allActors[j].get() != nullptr)
+                {
+                    //Complete j to i
+                    allActors[j]->TryCollision(allActors[i].get());
+                }
+            }
+        }   
     }
 }

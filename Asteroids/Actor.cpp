@@ -14,7 +14,7 @@ Actor::Actor(const std::string& actorName, const std::string& textureLocation)
 
 void Actor::FrameCall(float dt)
 {
-	
+	collider = sprite.getGlobalBounds();
 }
 
 sf::Vector2f const Actor::GetRightVector()
@@ -78,6 +78,40 @@ void Actor::SetRotation(float angle)
 void Actor::Rotate(float angle)
 {
 	sprite.rotate(angle);
+}
+
+bool Actor::Intersects(Actor *otherActor)
+{
+	return collider.intersects(otherActor->collider);
+}
+
+void Actor::TryCollision(Actor *other)
+{	
+	auto foundActor = std::find_if(collidingActors.begin(), collidingActors.end(), [&](Actor* actor) 
+	{
+        return actor == other;
+    });
+
+	//If the actor has not been found but we intersect
+	if (foundActor == collidingActors.end() && Intersects(other))
+	{
+		collidingActors.push_back(other);
+		OnCollisionStarted(other);
+	}
+	//If the actor has been found but we do not intersect anymore
+	else if (foundActor != collidingActors.end() && !Intersects(other))
+	{
+		collidingActors.erase(foundActor);
+		OnCollisionEnded(other);
+	}
+}
+
+void Actor::OnCollisionStarted(Actor *other)
+{
+}
+
+void Actor::OnCollisionEnded(Actor *other)
+{
 }
 
 void Actor::DestroyActor()

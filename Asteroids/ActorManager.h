@@ -59,6 +59,9 @@ public:
     */
     void DrawActors(sf::RenderWindow* drawingWindow);
 
+    /*
+    * Returns true if name exists in the currently spawned Actors
+    */
     bool NameExists(std::string name);
 
     virtual void FrameCall(float dt);

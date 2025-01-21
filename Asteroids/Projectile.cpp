@@ -11,6 +11,8 @@ void AProjectile::SendInDirection(sf::Vector2f movementDirection)
 
 void AProjectile::FrameCall(float dt)
 {
+    Actor::FrameCall(dt);
+
     sf::Vector2f movement = sf::Vector2f(moveDir.x * projectileSpeed, moveDir.y * projectileSpeed);
     Translate(movement * dt);
 
@@ -18,6 +20,15 @@ void AProjectile::FrameCall(float dt)
     if (GetPosition().x > GameManager::GetInstance().GetWindowSize().x || GetPosition().y > GameManager::GetInstance().GetWindowSize().y || GetPosition().x < 0 || GetPosition().y < 0)
     {
         DestroyActor();
+    }
+    
+}
+
+void AProjectile::OnCollisionStarted(Actor *other)
+{
+    if (AAsteroid* castedOther = dynamic_cast<AAsteroid*>(other))
+    {
+        DestroyActor(); 
     }
     
 }

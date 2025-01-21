@@ -14,4 +14,6 @@ public:
     void SendInDirection(sf::Vector2f movementDirection);
 
     virtual void FrameCall(float dt) override;
+
+    virtual void OnCollisionStarted(Actor* other) override;
 };

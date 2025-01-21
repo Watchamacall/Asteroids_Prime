@@ -13,6 +13,8 @@ protected:
 	sf::Sprite sprite;
 	sf::FloatRect collider;
 	std::string name;
+
+	std::vector<Actor*> collidingActors;
 public:
 	/*
 	* IMPROVAL:
@@ -64,6 +66,26 @@ public:
 	* Rotates the Actor around angle
 	*/
 	void Rotate(float angle);
+
+	/*
+	* Returns true if the OtherActor is intersecting with this Actor
+	*/
+	bool Intersects(Actor* otherActor);
+
+	/*
+	* Trys a collision with this Actor against 'other', deals with starting and ending the collision
+	*/
+	void TryCollision(Actor* other);
+
+	/*
+	* Called when the Actor has intersected with 'other'
+	*/
+	virtual void OnCollisionStarted(Actor* other);
+
+	/*
+	* Called when the Actor has finished intersecting with 'other'
+	*/
+	virtual void OnCollisionEnded(Actor* other);
 
 	/*
 	* Destroys this Actor

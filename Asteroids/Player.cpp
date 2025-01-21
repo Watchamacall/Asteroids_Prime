@@ -7,5 +7,7 @@ APlayer::APlayer(const std::string& textureLocation, const std::string& actorNam
 
 void APlayer::FrameCall(float dt)
 {
+	Actor::FrameCall(dt);
+	
 	controller->FrameCall(dt);
 }
