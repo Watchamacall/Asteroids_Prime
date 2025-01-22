@@ -25,7 +25,7 @@ void AProjectile::FrameCall(float dt)
 }
 
 void AProjectile::OnCollisionStarted(Actor *other)
-{
+{   
     if (AAsteroid* castedOther = dynamic_cast<AAsteroid*>(other))
     {
         DestroyActor(); 

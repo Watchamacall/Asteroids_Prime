@@ -1,6 +1,10 @@
 #pragma once
 #include <vector>
 #include "Asteroid.h"
+#include "Random.h"
+
+class GameManager;
+
 class AsteroidMSpawner
 {
 public:
@@ -8,10 +12,7 @@ public:
 
 	virtual void FrameCall(float dt);
 protected:
-	float spawnsPerSecond;
-	std::vector<AAsteroid*> spawnedAsteroids;
-
-public:
-
+	float spawnsPerSecond = 2.f;
+	float timeSinceLastSpawn;
 };
 

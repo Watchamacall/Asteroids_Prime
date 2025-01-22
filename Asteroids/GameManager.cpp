@@ -41,7 +41,8 @@ void GameManager::InitialiseGame()
         dt = deltaClock.restart().asSeconds(); //Delta Time
 
         actorManager->FrameCall(dt);
-            
+        aMasterSpawner->FrameCall(dt);
+        
         // Reset the window
         gameWindow->clear();
 
