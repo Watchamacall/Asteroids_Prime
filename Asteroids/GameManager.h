@@ -2,8 +2,8 @@
 #include "SFML/Graphics.hpp"
 #include "Actor.h"
 #include "ActorManager.h"
-#include "AsteroidMSpawner.h"
 #include "KeyboardHandle.h"
+#include "AsteroidMSpawner.h"
 #include <memory>
 
 enum GameState : int8_t
@@ -12,6 +12,7 @@ enum GameState : int8_t
 	STATE_PLAYING = 1
 };
 
+// class AsteroidMSpawner;
 class APlayer;
 
 class GameManager

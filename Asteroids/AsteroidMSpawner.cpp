@@ -1,5 +1,7 @@
 #include "AsteroidMSpawner.h"
-#include "GameManager.h"
+#include "Asteroid.h"
+// #include "GameManager.h"
+
 
 AsteroidMSpawner::AsteroidMSpawner()
 {
@@ -36,6 +38,8 @@ void AsteroidMSpawner::FrameCall(float dt)
         AAsteroid* spawnedAsteroid = GameManager::GetInstance().GetActorManager()->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png");
 
         spawnedAsteroid->SetRotation(rotation);
+
+        timeSinceLastSpawn = 0;
     }
     
 }

@@ -1,7 +1,9 @@
 #include "Projectile.h"
+#include "Asteroid.h"
 
-AProjectile::AProjectile(const std::string &actorName, const std::string &textureLocation) : Actor(actorName,textureLocation)
+AProjectile::AProjectile(const std::string &actorName, const std::string &textureLocation, const sf::Vector2f spawnLocation) : Actor(actorName,textureLocation)
 {
+    SetPosition(spawnLocation);
 }
 
 void AProjectile::SendInDirection(sf::Vector2f movementDirection)
@@ -21,7 +23,6 @@ void AProjectile::FrameCall(float dt)
     {
         DestroyActor();
     }
-    
 }
 
 void AProjectile::OnCollisionStarted(Actor *other)

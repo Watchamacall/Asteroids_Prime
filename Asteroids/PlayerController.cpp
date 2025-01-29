@@ -72,7 +72,7 @@ void PlayerController::WrapCheck()
 
 void PlayerController::ShootProjectile()
 {
-    AProjectile* NewProjectile = GameManager::GetInstance().GetActorManager()->CreateNewActor<AProjectile>("ShipProjectile", "Assets/Asteroid.png");
+    AProjectile* NewProjectile = GameManager::GetInstance().GetActorManager()->CreateNewActor<AProjectile>("ShipProjectile", "Assets/Asteroid.png", controllingActor->GetPosition());
     NewProjectile->SetPosition(controllingActor->GetPosition());
     NewProjectile->SendInDirection(controllingActor->GetForwardVector());
 

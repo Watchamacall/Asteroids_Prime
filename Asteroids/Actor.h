@@ -67,6 +67,7 @@ public:
 	*/
 	void Rotate(float angle);
 
+	void SetScale(float newScale) { sprite.setScale(newScale,newScale); }
 	/*
 	* Returns true if the OtherActor is intersecting with this Actor
 	*/

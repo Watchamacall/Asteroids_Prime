@@ -1,6 +1,8 @@
 #include "GameManager.h"
 #include "Player.h"
 #include "Asteroid.h"
+// #include "AsteroidMSpawner.h"
+
 
 std::unique_ptr<GameManager> GameManager::instance = nullptr;
 
@@ -11,6 +13,8 @@ GameManager::GameManager(const int windowWidth, const int windowHeight, std::str
     actorManager = std::make_unique<ActorManager>();
 
     kHandle = std::make_unique<KeyboardHandle>();
+
+    aMasterSpawner = std::make_unique<AsteroidMSpawner>();
 
 }
 

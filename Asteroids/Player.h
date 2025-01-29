@@ -3,6 +3,7 @@
 #include "PlayerController.h"
 class APlayer : public Actor
 {
+    
 public:
     APlayer(const std::string& actorName, const std::string& textureLocation);
     

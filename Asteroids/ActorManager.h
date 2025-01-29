@@ -19,22 +19,22 @@ public:
     /*
     * Creates an Actor of type T and returns it
     */
-	template <typename T> 
-    T* CreateNewActor(const std::string& actorName, const std::string& textureLocation)
+	template <typename T, typename... Args>
+    T* CreateNewActor(Args&&... args)
     {
         static_assert(std::is_base_of<Actor, T>::value, "T must be derived from Actor");
 
-        int nameAddition = 0;
-        while (NameExists(actorName + std::to_string(nameAddition)))
-        {
-            nameAddition += 1;
-        }
+        // int nameAddition = 0;
+        // while (NameExists(actorName + std::to_string(nameAddition)))
+        // {
+        //     nameAddition += 1;
+        // }
         
-        std::string newActorName = actorName + std::to_string(nameAddition);
+        // std::string newActorName = actorName + std::to_string(nameAddition);
 
-        std::cout << "Actor Name: " + newActorName << std::endl;
+        // std::cout << "Actor Name: " + newActorName << std::endl;
         
-        auto newActor = std::make_unique<T>(newActorName, textureLocation);
+        auto newActor = std::make_unique<T>(std::forward<Args>(args)...);
         T* returnActor = newActor.get();
         allActors.push_back(std::move(newActor));
 
