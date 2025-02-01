@@ -25,9 +25,6 @@ void GameManager::InitialiseGame()
     //Start player in middle of screen
     sf::Vector2u windowSize = gameWindow->getSize();
     player->SetPosition(sf::Vector2f(windowSize.x / 2, windowSize.y / 2));
-    
-    //TESTING ASTEROID
-    AAsteroid* Asteroid = actorManager->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png");
 
     while (gameWindow->isOpen())
     {
@@ -49,12 +46,6 @@ void GameManager::InitialiseGame()
         
         // Reset the window
         gameWindow->clear();
-
-        // Asteroid spins in the center of the screen
-        Asteroid->SetPosition(400, 400);
-        float Rotation = 90.0f;
-        Asteroid->Rotate(Rotation * GetDeltaTime());
-        gameWindow->draw(Asteroid->GetSprite());
 
         actorManager->DrawActors(gameWindow.get());
 

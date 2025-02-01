@@ -1,7 +1,5 @@
 #include "AsteroidMSpawner.h"
 #include "Asteroid.h"
-// #include "GameManager.h"
-
 
 AsteroidMSpawner::AsteroidMSpawner()
 {
@@ -10,7 +8,6 @@ AsteroidMSpawner::AsteroidMSpawner()
 
 void AsteroidMSpawner::FrameCall(float dt)
 {
-    
     if (timeSinceLastSpawn < spawnsPerSecond)
     {
         timeSinceLastSpawn += dt;
@@ -31,15 +28,16 @@ void AsteroidMSpawner::FrameCall(float dt)
             spawnLocation.y = rand() % 2 ? 0 : screenSize.y;
             spawnLocation.x = Random::RandomFloat(0, screenSize.x);
         }
+
+        float xDifference = (screenSize.x / 2.f) - spawnLocation.x;
+        float yDifference = (screenSize.y / 2.f) - spawnLocation.y;
+
+        sf::Vector2f vector = sf::Vector2f(xDifference, yDifference);
         
-        sf::Vector2f centerOfScreen = spawnLocation - sf::Vector2f(screenSize.x / 2.f, screenSize.y / 2.f);
-        rotation = std::atan2(centerOfScreen.y, centerOfScreen.x) * (180.0f / M_PI);
+        AAsteroid* spawnedAsteroid = GameManager::GetInstance().GetActorManager()->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png", spawnLocation);
 
-        AAsteroid* spawnedAsteroid = GameManager::GetInstance().GetActorManager()->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png");
-
-        spawnedAsteroid->SetRotation(rotation);
+        spawnedAsteroid->SetAsteroidVector(vector);
 
         timeSinceLastSpawn = 0;
     }
-    
 }

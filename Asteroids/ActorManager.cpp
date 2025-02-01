@@ -7,11 +7,11 @@ ActorManager::ActorManager()
 
 }
 
-bool ActorManager::destroyActor(const std::string actorName)
+bool ActorManager::destroyActor(Actor& actorToDestroy)
 {
     auto remActor = std::find_if(allActors.begin(), allActors.end(), [&](const auto& actor) 
     {
-        return actor.get() ->GetName() == actorName;
+        return actor.get() == &actorToDestroy;
     });
 
     if (remActor->get() != nullptr)

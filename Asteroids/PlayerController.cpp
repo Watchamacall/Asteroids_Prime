@@ -75,8 +75,6 @@ void PlayerController::ShootProjectile()
     AProjectile* NewProjectile = GameManager::GetInstance().GetActorManager()->CreateNewActor<AProjectile>("ShipProjectile", "Assets/Asteroid.png", controllingActor->GetPosition());
     NewProjectile->SetPosition(controllingActor->GetPosition());
     NewProjectile->SendInDirection(controllingActor->GetForwardVector());
-
-    std::cout << "Spawned New Projectile" << std::endl;
 }
 
 void PlayerController::MoveCharacter(float movementDirection)

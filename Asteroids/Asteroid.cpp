@@ -6,13 +6,19 @@ void AAsteroid::FrameCall(float dt)
 {
     Actor::FrameCall(dt);
     
-    sf::Vector2f movementSpeed = sf::Vector2f(GetForwardVector().x * (asteroidSpeed * dt), GetForwardVector().y * (asteroidSpeed * dt));
+    sf::Vector2f movementSpeed = sf::Vector2f(moveVector.x * (asteroidSpeed * dt), moveVector.y * (asteroidSpeed * dt));
     Translate(movementSpeed);
     WrapCheck();
 }
 
 void AAsteroid::OnCollisionStarted(Actor *other)
 {
+    if (!IsCollisionEnabled())
+    {
+        return;
+    }
+    
+
     if (!dynamic_cast<AProjectile*>(other))
     {
         return;
@@ -52,9 +58,10 @@ void AAsteroid::WrapCheck()
 {
     sf::Vector2f PlayerPos = GetPosition();
     //If the Player is over the right hand side
-    if (PlayerPos.x > GameManager::GetInstance().GetWindowSize().x || PlayerPos.x < 0 ||
-        PlayerPos.y > GameManager::GetInstance().GetWindowSize().y || PlayerPos.y < 0)
+    if (PlayerPos.x > GameManager::GetInstance().GetWindowSize().x || PlayerPos.x < -100 ||
+        PlayerPos.y > GameManager::GetInstance().GetWindowSize().y || PlayerPos.y < -100)
     {
         DestroyActor();
+        std::cout << "Destroyed Actor because it was out of bounds" << std::endl;
     }
 }

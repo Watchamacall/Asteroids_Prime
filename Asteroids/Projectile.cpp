@@ -1,9 +1,8 @@
 #include "Projectile.h"
 #include "Asteroid.h"
 
-AProjectile::AProjectile(const std::string &actorName, const std::string &textureLocation, const sf::Vector2f spawnLocation) : Actor(actorName,textureLocation)
+AProjectile::AProjectile(const std::string &actorName, const std::string &textureLocation, const sf::Vector2f spawnLocation) : Actor(actorName,textureLocation, spawnLocation)
 {
-    SetPosition(spawnLocation);
 }
 
 void AProjectile::SendInDirection(sf::Vector2f movementDirection)
@@ -27,6 +26,11 @@ void AProjectile::FrameCall(float dt)
 
 void AProjectile::OnCollisionStarted(Actor *other)
 {   
+     if (!IsCollisionEnabled())
+    {
+        return;
+    }
+
     if (AAsteroid* castedOther = dynamic_cast<AAsteroid*>(other))
     {
         DestroyActor(); 

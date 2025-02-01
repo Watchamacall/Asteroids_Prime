@@ -1,8 +1,10 @@
 #include "Actor.h"
 #include "GameManager.h"
 
-Actor::Actor(const std::string& actorName, const std::string& textureLocation)
+Actor::Actor(const std::string &actorName, const std::string &textureLocation, const sf::Vector2f initialPosition)
 {
+	SetPosition(initialPosition);
+
 	if (!textureLocation.empty())
 	{
 		texture.loadFromFile(textureLocation);
@@ -10,6 +12,7 @@ Actor::Actor(const std::string& actorName, const std::string& textureLocation)
 	}
 	sprite.setTexture(texture);
 	collider = sprite.getGlobalBounds();
+	SetCollision(true);
 }
 
 void Actor::FrameCall(float dt)
@@ -117,4 +120,5 @@ void Actor::OnCollisionEnded(Actor *other)
 void Actor::DestroyActor()
 {
 	GameManager::GetInstance().GetActorManager()->destroyActor(*this);
+	std::cout << "Destroyed: " << GetName() << std::endl;
 }

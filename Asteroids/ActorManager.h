@@ -42,17 +42,9 @@ public:
     }
 
     /*
-    * Destroys Actor based on name
-    */
-    bool destroyActor(const std::string actorName);
-    
-    /*
     * Destroys Actor based on the exact Reference
     */ 
-    bool destroyActor(Actor& actor)
-    {
-        return destroyActor(actor.GetName());
-    }
+    bool destroyActor(Actor& actorToDestroy);
 
     /*
     * Draws all the Actors to the drawingWindow
