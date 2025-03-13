@@ -25,7 +25,6 @@ protected:
 	float rotationSpeed = 250.f;
 
 	InputListener* forward = nullptr;
-	InputListener* backward = nullptr;
 	InputListener* right = nullptr;
 	InputListener* left = nullptr;
 	InputListener* shoot = nullptr;

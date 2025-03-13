@@ -32,7 +32,7 @@ void AsteroidMSpawner::FrameCall(float dt)
         float xDifference = (screenSize.x / 2.f) - spawnLocation.x;
         float yDifference = (screenSize.y / 2.f) - spawnLocation.y;
 
-        sf::Vector2f vector = sf::Vector2f(xDifference, yDifference);
+        sf::Vector2f vector = sf::Vector2f(xDifference + Random::RandomFloat(-movementFromCenter, movementFromCenter), yDifference + Random::RandomFloat(-movementFromCenter, movementFromCenter));
         
         AAsteroid* spawnedAsteroid = GameManager::GetInstance().GetActorManager()->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png", spawnLocation);
 

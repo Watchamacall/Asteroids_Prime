@@ -11,7 +11,7 @@ public:
 
 protected:
     sf::Vector2f moveDir;
-    float projectileSpeed = 150.f;
+    float projectileSpeed = 550.f;
 public:
     void SendInDirection(sf::Vector2f movementDirection);
 

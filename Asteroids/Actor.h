@@ -17,6 +17,7 @@ protected:
 	std::vector<Actor*> collidingActors;
 
 	bool collisionEnabled = false;
+	bool toBeDestroyed = false;
 public:
 
 	Actor(const std::string& actorName, const std::string& textureLocation, const sf::Vector2f initialPosition = sf::Vector2f());
@@ -63,10 +64,14 @@ public:
 	* Returns whether the collision is Enabled or Disabled
 	*/
 	bool const IsCollisionEnabled() { return collisionEnabled; }
+
+	bool const CanDestroy() { return toBeDestroyed; }
 	/*
 	* Sets the collision
 	*/
 	void SetCollision(const bool newState) { collisionEnabled = newState; }
+
+	void SetName(const std::string& newName) { name = newName; }
 	/*
 	* Sets the texture based on the asset location given
 	*/

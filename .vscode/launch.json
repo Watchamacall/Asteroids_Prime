@@ -9,6 +9,12 @@
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "${workspaceFolder}/Asteroids",
+      "environment": [
+        {
+            "name": "LD_LIBRARY_PATH",
+            "value": "${workspaceFolder}/Asteroids/SFML-2.6.1/lib"
+        }
+      ],
       "program": "${workspaceFolder}/Asteroids/build/main",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",

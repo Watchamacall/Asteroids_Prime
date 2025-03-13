@@ -8,6 +8,7 @@ AProjectile::AProjectile(const std::string &actorName, const std::string &textur
 void AProjectile::SendInDirection(sf::Vector2f movementDirection)
 {
     moveDir = movementDirection;
+    SetScale(0.5f);
 }
 
 void AProjectile::FrameCall(float dt)
@@ -35,5 +36,4 @@ void AProjectile::OnCollisionStarted(Actor *other)
     {
         DestroyActor(); 
     }
-    
 }

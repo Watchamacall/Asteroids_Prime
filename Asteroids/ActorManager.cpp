@@ -1,26 +1,32 @@
 #include "ActorManager.h"
 #include <type_traits>
 #include "GameManager.h"
+#include <set>
+#include <regex>
 
 ActorManager::ActorManager()
 {
 
 }
 
-bool ActorManager::destroyActor(Actor& actorToDestroy)
+bool ActorManager::destroyActor(Actor* actorToDestroy)
 {
-    auto remActor = std::find_if(allActors.begin(), allActors.end(), [&](const auto& actor) 
+    if (!actorToDestroy)
     {
-        return actor.get() == &actorToDestroy;
-    });
-
-    if (remActor->get() != nullptr)
-    {
-        allActors.erase(remActor);
-        return true;
+        return false;
     }
-    
-    return false;
+
+    allActors.erase(
+        std::remove_if(
+            allActors.begin(), allActors.end(), [actorToDestroy] (const std::unique_ptr<Actor>& ptr) 
+            {
+                return ptr.get() == actorToDestroy;
+            }
+        ),
+        allActors.end()
+    );
+
+    return true;
 }
 
 void ActorManager::DrawActors(sf::RenderWindow* drawingWindow)
@@ -43,10 +49,60 @@ bool ActorManager::NameExists(std::string name)
     return false;
 }
 
+int ActorManager::GetLowestNumber(const std::string& name)
+{
+    std::set<int> numbers;
+    std::regex number_regex("\\d+");
+
+    for (const auto& actor : allActors) 
+    {
+        std::string actorName = actor->GetName();
+        if (actorName.find(name))
+        {
+            std::smatch match;
+            if (std::regex_search(actorName, match, number_regex))
+            {
+                numbers.insert(std::stoi(match.str()));
+            }
+        }
+    }
+
+    int smallest_missing = 1;
+    while (numbers.count(smallest_missing)) {
+        ++smallest_missing;
+    }
+    return smallest_missing;
+}
+
 void ActorManager::FrameCall(float dt)
 {
+    // Collect the raw pointers of actors to be removed
+    std::vector<Actor*> toBeRemoved;
+    for (const auto& actor : allActors) {
+        if (actor->CanDestroy()) {
+            toBeRemoved.push_back(actor.get());
+        }
+    }
+
+    // Remove the unique_ptrs that own the actors in toBeRemoved
+    allActors.erase(
+        std::remove_if(allActors.begin(), allActors.end(),
+            [&toBeRemoved](const std::unique_ptr<Actor>& actor) {
+                return std::find(toBeRemoved.begin(), toBeRemoved.end(), actor.get()) != toBeRemoved.end();
+            }),
+        allActors.end()
+    );
+    
+    for (auto& actor : newActors) {
+        actor->SetCollision(true);
+        allActors.push_back(std::move(actor));
+    }
+    newActors.clear();
+     
+    
     for (size_t i = 0; i < std::size(allActors); i++)
     {
+
         if (allActors[i].get() != nullptr)
         {
             allActors[i]->FrameCall(dt);
@@ -54,13 +110,9 @@ void ActorManager::FrameCall(float dt)
             //COLLISION CHECK
             for (size_t j = i+1; j < std::size(allActors); j++)
             {
-                //Complete i to j
-                allActors[i]->TryCollision(allActors[j].get());
-
-                //If i and j are not destroyed that frame
-                if (allActors[i].get() != nullptr && allActors[j].get() != nullptr)
+                if (allActors[j])
                 {
-                    //Complete j to i
+                    allActors[i]->TryCollision(allActors[j].get());
                     allActors[j]->TryCollision(allActors[i].get());
                 }
             }

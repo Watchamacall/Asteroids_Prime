@@ -14,9 +14,9 @@
         "Asteroids/SFML-2.6.1/include",
         "-L",
         "Asteroids/SFML-2.6.1/lib",
-        "-lsfml-graphics",
+        "-lsfml-system",
         "-lsfml-window",
-        "-lsfml-system"
+        "-lsfml-graphics"
       ],
       "group": {
         "kind": "build",

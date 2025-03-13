@@ -12,7 +12,6 @@ Actor::Actor(const std::string &actorName, const std::string &textureLocation, c
 	}
 	sprite.setTexture(texture);
 	collider = sprite.getGlobalBounds();
-	SetCollision(true);
 }
 
 void Actor::FrameCall(float dt)
@@ -89,7 +88,7 @@ bool Actor::Intersects(Actor *otherActor)
 }
 
 void Actor::TryCollision(Actor *other)
-{	
+{
 	auto foundActor = std::find_if(collidingActors.begin(), collidingActors.end(), [&](Actor* actor) 
 	{
         return actor == other;
@@ -119,6 +118,8 @@ void Actor::OnCollisionEnded(Actor *other)
 
 void Actor::DestroyActor()
 {
-	GameManager::GetInstance().GetActorManager()->destroyActor(*this);
-	std::cout << "Destroyed: " << GetName() << std::endl;
+	toBeDestroyed = true;
+	// std::cout << "Set Actor " << GetName() << " to be destroyed!" << std::endl;
+	SetCollision(false);
+	// GameManager::GetInstance().GetActorManager()->destroyActor(*this);
 }

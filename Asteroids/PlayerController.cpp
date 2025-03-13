@@ -13,9 +13,6 @@ PlayerController::PlayerController(Actor* actorToControl)
     right = bindings->CreateNewInput("Right", sf::Keyboard::D);
     right->AddOnHeld([this] { RotateCharacter(1); });
 
-    backward = bindings->CreateNewInput("Backwards", sf::Keyboard::S);
-    backward->AddOnHeld([this] { MoveCharacter(-1); });
-
     left = bindings->CreateNewInput("Left", sf::Keyboard::A);
     left->AddOnHeld([this] { RotateCharacter(-1); });
 

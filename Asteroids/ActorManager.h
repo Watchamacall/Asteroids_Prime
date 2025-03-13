@@ -15,6 +15,8 @@ public:
 protected:
     std::vector<std::unique_ptr<Actor>> allActors;
 
+    std::vector<std::unique_ptr<Actor>> newActors;
+
 public:
     /*
     * Creates an Actor of type T and returns it
@@ -23,28 +25,22 @@ public:
     T* CreateNewActor(Args&&... args)
     {
         static_assert(std::is_base_of<Actor, T>::value, "T must be derived from Actor");
-
-        // int nameAddition = 0;
-        // while (NameExists(actorName + std::to_string(nameAddition)))
-        // {
-        //     nameAddition += 1;
-        // }
-        
-        // std::string newActorName = actorName + std::to_string(nameAddition);
-
-        // std::cout << "Actor Name: " + newActorName << std::endl;
         
         auto newActor = std::make_unique<T>(std::forward<Args>(args)...);
-        T* returnActor = newActor.get();
-        allActors.push_back(std::move(newActor));
+        Actor* returnActor = newActor.get();
 
-        return returnActor;
+        int numberAddition = GetLowestNumber(returnActor->GetName());
+        const std::string newName = returnActor->GetName() + " (" + std::to_string(numberAddition) + ")";
+        returnActor->SetName(newName);
+        newActors.push_back(std::move(newActor));
+
+        return dynamic_cast<T*>(returnActor);
     }
 
     /*
-    * Destroys Actor based on the exact Reference
+    * Destroys Actor based on the pointer
     */ 
-    bool destroyActor(Actor& actorToDestroy);
+    bool destroyActor(Actor* actorToDestroy);
 
     /*
     * Draws all the Actors to the drawingWindow
@@ -55,6 +51,8 @@ public:
     * Returns true if name exists in the currently spawned Actors
     */
     bool NameExists(std::string name);
+
+    int GetLowestNumber(const std::string& name);
 
     virtual void FrameCall(float dt);
 

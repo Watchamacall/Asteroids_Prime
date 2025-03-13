@@ -15,5 +15,6 @@ public:
 protected:
 	float spawnsPerSecond = 2.f;
 	float timeSinceLastSpawn;
+	float movementFromCenter = 70.f;
 };
 

@@ -6,9 +6,9 @@ int main()
 {
     /*
         * Requirements: 
-        * -	The game starts with the player ship in the center of the screen
+        * -	The game starts with the player ship in the center of the screen (DONE)
         * -	Their score and number of remaining lives are always visible. They start with 0 score and 3 lives
-        * -	The player can move the ship forwards, and turn left and right
+        * -	The player can move the ship forwards, and turn left and right (DONE)
         * -	The player can shoot bullets, that fire forward in the direction the ship is facing
         * -	Asteroids spawn from outside of the screen. They move with a constant velocity
         * -	The screen is static, but it �wraps� for the player and asteroids. When they exit the screen on one side they reappear on the other. Bullets do not wrap
@@ -24,66 +24,6 @@ int main()
 
     //Initalise GameManager
     GameManager::GetInstance().InitialiseGame();
-
-    // ------------ ANYTHING BELOW CAN BE FOUND IN GAMEMANAGER -------------------//
-    //sf::RenderWindow window(sf::VideoMode(800, 800), "Asteroids Exercise"); //REMOVE
-
-    //sf::Clock GameClock; //REMOVE
-
-    // Grab textures and set up sprites
-    // sf::Texture AsteroidTexture;
-
-    // AsteroidTexture.loadFromFile("Assets/Asteroid.png");
-
-    // sf::Sprite Asteroid;
-    // Asteroid.setTexture(AsteroidTexture);
-
-    
-    //std::unique_ptr<APlayer> player = std::make_unique<APlayer>("Assets/Ship.png", "Player");
-    
-
-    // while (window.isOpen())
-    // {
-    //     gameManager->FrameCall();
-
-    //     // Get the delta time for the game update
-    //     sf::Time dt = GameClock.restart();
-
-    //     // Poll for window being closed
-    //     sf::Event event;
-
-    //     while (window.pollEvent(event))
-    //     {
-    //         if (event.type == sf::Event::Closed)
-    //             window.close();
-    //     }
-
-    //     // Reset the window
-    //     window.clear();
-
-        
-
-        
-        //-----------------------------------------------------------------------------------
-        // Game logic can go here
-
-        // Player ship follows the mouse
-    //     sf::Vector2f MousePosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
-
-    //     //player->Move(MousePosition);
-        
-    //     //window.draw(player->GetSprite());
-
-    //     // Asteroid spins in the center of the screen
-    //     Asteroid.setPosition(400, 400);
-    //     float Rotation = 90.0f;
-    //     Asteroid.rotate(Rotation * dt.asSeconds());
-    //     window.draw(Asteroid);
-
-    //     //-----------------------------------------------------------------------------------
-    //     // Display the updated game state
-    //     window.display();
-    // }
 
     return 0;
 }
