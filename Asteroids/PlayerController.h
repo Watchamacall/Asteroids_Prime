@@ -5,18 +5,36 @@
 #include "InputListener.h"
 #include "Projectile.h"
 #include "GameManager.h"
+#include "Component.h"
 
 class APlayer;
 
 /*
 * Handles all inputs for the Player and moves accordingly
 */
-class PlayerController
+class PlayerController : public Component
 {
 public:
-	PlayerController(Actor* actorToControl);
+	PlayerController(Actor* actorToControl) : Component(actorToControl)
+	{
+		controllingActor = actorToControl;
 
-	virtual void FrameCall(float dt);
+		bindings = GameManager::GetInstance().GetKeybindings();
+
+		forward = bindings->CreateNewInput("Forward", sf::Keyboard::W);
+		forward->onHeld->AddDelegate([this] { MoveCharacter(1); });
+
+		right = bindings->CreateNewInput("Right", sf::Keyboard::D);
+		right->onHeld->AddDelegate([this] { RotateCharacter(1); });
+
+		left = bindings->CreateNewInput("Left", sf::Keyboard::A);
+		left->onHeld->AddDelegate([this] { RotateCharacter(-1); });
+
+		shoot = bindings->CreateNewInput("Shoot", sf::Keyboard::Space);
+		shoot->onPressed->AddDelegate([this] { ShootProjectile(); });
+	}
+
+	virtual void FrameCall(float dt) override;
 
 protected:
 	KeyBindings* bindings;

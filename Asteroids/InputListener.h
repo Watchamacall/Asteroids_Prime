@@ -13,24 +13,15 @@ public:
 protected:
     sf::Keyboard::Key listenKey;
     std::string inputName;
-    std::unique_ptr<VoidDelegate> onPressed;
-    std::unique_ptr<VoidDelegate> onHeld;
-    std::unique_ptr<VoidDelegate> onReleased;
     bool pressed;
 
 public:
-    void AddOnPressed(std::function<void()> function);
+    std::unique_ptr<Delegate<void, void>> onPressed;
+    std::unique_ptr<Delegate<void, void>> onHeld;
+    std::unique_ptr<Delegate<void, void>> onReleased;
 
-    void AddOnHeld(std::function<void()> function);
 
-    void AddOnReleased(std::function<void()> function);
-
-    void ExecuteOnPressed() { onPressed->Execute(); }
-
-    void ExecuteOnHeld() { onHeld->Execute(); }
-
-    void ExecuteOnReleased() { onReleased->Execute(); }
-
+public:
     std::string GetInputName() { return inputName; }
 
     sf::Keyboard::Key GetKeyboardInput() { return listenKey; }

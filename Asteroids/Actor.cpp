@@ -1,7 +1,8 @@
 #include "Actor.h"
 #include "GameManager.h"
+#include "Component.h"
 
-Actor::Actor(const std::string &actorName, const std::string &textureLocation, const sf::Vector2f initialPosition)
+Actor::Actor(const std::string &actorName, const std::string &textureLocation, const sf::Vector2f initialPosition, Actor* owner) : owner(owner)
 {
 	SetPosition(initialPosition);
 
@@ -17,6 +18,11 @@ Actor::Actor(const std::string &actorName, const std::string &textureLocation, c
 void Actor::FrameCall(float dt)
 {
 	collider = sprite.getGlobalBounds();
+
+	for (auto& component : components)
+	{
+		component->FrameCall(dt);
+	}
 }
 
 sf::Vector2f const Actor::GetRightVector()

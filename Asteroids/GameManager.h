@@ -79,6 +79,7 @@ public:
 	*/
 	sf::Vector2u GetWindowSize() { return gameWindow->getSize(); }
 
+	sf::RenderWindow* GetWindow() const { return gameWindow.get(); }
 	/*
 	* Initialises game runtime
 	*/

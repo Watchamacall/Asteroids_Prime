@@ -130,6 +130,7 @@
     "regex": "cpp",
     "mutex": "cpp",
     "stdfloat": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "ranges": "cpp"
   }
 }

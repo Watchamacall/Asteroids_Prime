@@ -1,33 +1,48 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <memory>
+#include <functional>
 #include <math.h>
+#include "Component.h"
 
 class GameManager;
 
 class Actor
 {
-public:
-
 protected:
 	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::FloatRect collider;
 	std::string name;
 
+	std::vector<std::unique_ptr<Component>> components;
+
 	std::vector<Actor*> collidingActors;
 
 	bool collisionEnabled = false;
 	bool toBeDestroyed = false;
+	Actor* owner;
 public:
 
-	Actor(const std::string& actorName, const std::string& textureLocation, const sf::Vector2f initialPosition = sf::Vector2f());
+	Actor(const std::string& actorName, const std::string& textureLocation, const sf::Vector2f initialPosition = sf::Vector2f(), Actor* owner = nullptr);
 	virtual ~Actor() = default;
 
 	/*
 	*  Called every frame
 	*/
 	virtual void FrameCall(float dt);
-	
+
+	/*
+	* Adds a component to the Actor
+	*/
+    template <typename T, typename... Args>
+    T* AddComponent(Args&&... args) {
+        auto component = std::make_unique<T>(this, std::forward<Args>(args)...);
+        T* ptr = component.get();
+        components.push_back(std::move(component));
+        return ptr;
+    }
+
 	/*
 	* Returns the Texture
 	*/
@@ -44,6 +59,10 @@ public:
 	* Returns the Name of the Actor 
 	*/
 	std::string const GetName() { return name; }
+	/*
+	* Returns the Owner of the Actor
+	*/
+	Actor* GetOwner() { return owner; }
 	/*
 	* Returns the current Position of the Actor
 	*/

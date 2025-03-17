@@ -16,13 +16,13 @@ void KeyBindings::KeyCheck()
 		bool curInput = sf::Keyboard::isKeyPressed(key);
 
 		if (curInput && !prevKeyState[key])
-			input->ExecuteOnPressed();
+			input->onPressed->Execute();
 		else if (curInput && prevKeyState[key])
 		{
-			input->ExecuteOnHeld();
+			input->onHeld->Execute();
 		}
 		else if (!curInput && prevKeyState[key])
-			input->ExecuteOnReleased();
+			input->onReleased->Execute();
 
 		prevKeyState[key] = curInput;
 	}

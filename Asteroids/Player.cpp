@@ -1,15 +1,22 @@
 #include "Player.h"
 #include "Asteroid.h"
+#include "UIManager.h"
+#include "PlayerLives.h"
+#include "PlayerScore.h"
+
 APlayer::APlayer(const std::string& textureLocation, const std::string& actorName) : Actor(textureLocation, actorName)
 {
-	controller = std::make_unique<PlayerController>(this);
+	controller = AddComponent<PlayerController>();
+
+	playerLives = AddComponent<PlayerLives>();
+	playerScore = AddComponent<PlayerScore>();
+	uiManager = AddComponent<UIManager>();
+
 }
 
 void APlayer::FrameCall(float dt)
 {
 	Actor::FrameCall(dt);
-	
-	controller->FrameCall(dt);
 }
 
 void APlayer::OnCollisionStarted(Actor* other)
@@ -22,5 +29,6 @@ void APlayer::OnCollisionStarted(Actor* other)
 	if (dynamic_cast<AAsteroid*>(other))
 	{
 		std::cout << "Asteroid has hit player" << std::endl;
+		playerLives->TakeDamage();
 	}
 }

@@ -1,25 +1,6 @@
 #include "PlayerController.h"
 #include "Player.h"
 
-PlayerController::PlayerController(Actor* actorToControl)
-{
-    controllingActor = actorToControl;
-
-    bindings = GameManager::GetInstance().GetKeybindings();
-
-    forward = bindings->CreateNewInput("Forward", sf::Keyboard::W);
-    forward->AddOnHeld([this] { MoveCharacter(1); });
-
-    right = bindings->CreateNewInput("Right", sf::Keyboard::D);
-    right->AddOnHeld([this] { RotateCharacter(1); });
-
-    left = bindings->CreateNewInput("Left", sf::Keyboard::A);
-    left->AddOnHeld([this] { RotateCharacter(-1); });
-
-    shoot = bindings->CreateNewInput("Shoot", sf::Keyboard::Space);
-    shoot->AddOnReleased([this] { ShootProjectile(); });
-}
-
 void PlayerController::FrameCall(float dt)
 {
     
@@ -69,7 +50,7 @@ void PlayerController::WrapCheck()
 
 void PlayerController::ShootProjectile()
 {
-    AProjectile* NewProjectile = GameManager::GetInstance().GetActorManager()->CreateNewActor<AProjectile>("ShipProjectile", "Assets/Asteroid.png", controllingActor->GetPosition());
+    AProjectile* NewProjectile = GameManager::GetInstance().GetActorManager()->CreateNewActor<AProjectile>("ShipProjectile", "Assets/Asteroid.png", controllingActor->GetPosition(), controllingActor);
     NewProjectile->SetPosition(controllingActor->GetPosition());
     NewProjectile->SendInDirection(controllingActor->GetForwardVector());
 }

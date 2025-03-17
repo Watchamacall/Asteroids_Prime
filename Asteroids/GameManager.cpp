@@ -28,6 +28,9 @@ void GameManager::InitialiseGame()
 
     while (gameWindow->isOpen())
     {
+        // Reset the window
+        gameWindow->clear();
+
         sf::Event event;
         while (gameWindow->pollEvent(event))
         {
@@ -44,8 +47,7 @@ void GameManager::InitialiseGame()
         actorManager->FrameCall(dt);
         aMasterSpawner->FrameCall(dt);
         
-        // Reset the window
-        gameWindow->clear();
+
 
         actorManager->DrawActors(gameWindow.get());
 

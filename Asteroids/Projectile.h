@@ -3,11 +3,12 @@
 #include "GameManager.h"
 
  class AAsteroid;
+ class APlayer;
 
 class AProjectile : public Actor
 {
 public:
-    AProjectile(const std::string& actorName, const std::string& textureLocation, const sf::Vector2f spawnLocation);
+    AProjectile(const std::string& actorName, const std::string& textureLocation, const sf::Vector2f spawnLocation, Actor* owner);
 
 protected:
     sf::Vector2f moveDir;

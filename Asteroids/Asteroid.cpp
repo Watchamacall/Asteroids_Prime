@@ -47,7 +47,6 @@ void AAsteroid::OnCollisionStarted(Actor *other)
         default:
             break;
         }
-        std::cout << "Scale is " << std::to_string(newAst->asteroidSet) << std::endl;
 
         //Flick in different direction
         sf::Vector2f vector = sf::Vector2f(moveVector.x + Random::RandomFloat(-leftMovement, rightMovement), moveVector.y + Random::RandomFloat(-leftMovement, rightMovement));

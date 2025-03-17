@@ -1,7 +1,9 @@
 #include "Projectile.h"
 #include "Asteroid.h"
+#include "Player.h"
+#include "PlayerScore.h"
 
-AProjectile::AProjectile(const std::string &actorName, const std::string &textureLocation, const sf::Vector2f spawnLocation) : Actor(actorName,textureLocation, spawnLocation)
+AProjectile::AProjectile(const std::string &actorName, const std::string &textureLocation, const sf::Vector2f spawnLocation, Actor* owner) : Actor(actorName,textureLocation, spawnLocation, owner)
 {
 }
 
@@ -34,6 +36,14 @@ void AProjectile::OnCollisionStarted(Actor *other)
 
     if (AAsteroid* castedOther = dynamic_cast<AAsteroid*>(other))
     {
+        if (APlayer* player = dynamic_cast<APlayer*>(GetOwner()))
+        {
+            player->GetPlayerScore()->AddScore(10);
+        }
+        {
+            /* code */
+        }
+        
         DestroyActor(); 
     }
 }
