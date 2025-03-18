@@ -24,9 +24,36 @@ public:
     //Executes when the currentLives <= 0
     std::unique_ptr<Delegate<void, void>> noLivesLeft;
 
+protected:
+    /*
+    * The maximum amount of lives the player can have
+    */
     int maxLives = 3;
+    /*
+    * The current amount of lives the player has
+    */
     float currentLives;
 
+    /*
+    * The time the player is invincible after taking damage
+    */
+    float invincibilityTime = 2.f;
+    /*
+    * The current time the player has been invincible
+    */
+    float currentInvincibilityTime = 0.f;
+    /*
+    * Whether the player is invincible or not
+    */
+    bool isInvincible = false;
+    /*
+    * The rate at which the player blinks when invincible
+    */
+    int invincibilityBlinkRate = 5;
 public:
+    /*
+    * Called when the player takes damage
+    */
     void TakeDamage();
+    virtual void FrameCall(float dt) override;
 };

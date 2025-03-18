@@ -15,10 +15,8 @@ class APlayer;
 class PlayerController : public Component
 {
 public:
-	PlayerController(Actor* actorToControl) : Component(actorToControl)
+	PlayerController(Actor* owner) : Component(owner)
 	{
-		controllingActor = actorToControl;
-
 		bindings = GameManager::GetInstance().GetKeybindings();
 
 		forward = bindings->CreateNewInput("Forward", sf::Keyboard::W);
@@ -38,7 +36,6 @@ public:
 
 protected:
 	KeyBindings* bindings;
-	Actor* controllingActor;
 	float forwardSpeed = 500.f;
 	float rotationSpeed = 250.f;
 

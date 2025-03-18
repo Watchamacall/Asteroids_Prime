@@ -8,7 +8,7 @@ void PlayerController::FrameCall(float dt)
 
 void PlayerController::RotateCharacter(float rotationDirection)
 {
-    if (APlayer* castedPlayer = static_cast<APlayer*>(controllingActor))
+    if (APlayer* castedPlayer = dynamic_cast<APlayer*>(owner))
     {
         float deltaSpeed = (rotationSpeed * GameManager::GetInstance().GetDeltaTime());
         castedPlayer->Rotate(deltaSpeed * rotationDirection);
@@ -18,7 +18,7 @@ void PlayerController::RotateCharacter(float rotationDirection)
 
 void PlayerController::WrapCheck()
 {
-    if (APlayer* castedPlayer = static_cast<APlayer*>(controllingActor))
+    if (APlayer* castedPlayer = dynamic_cast<APlayer*>(owner))
     {
         sf::Vector2f PlayerPos = castedPlayer->GetPosition();
         //If the Player is over the right hand side
@@ -50,14 +50,13 @@ void PlayerController::WrapCheck()
 
 void PlayerController::ShootProjectile()
 {
-    AProjectile* NewProjectile = GameManager::GetInstance().GetActorManager()->CreateNewActor<AProjectile>("ShipProjectile", "Assets/Asteroid.png", controllingActor->GetPosition(), controllingActor);
-    NewProjectile->SetPosition(controllingActor->GetPosition());
-    NewProjectile->SendInDirection(controllingActor->GetForwardVector());
+    AProjectile* NewProjectile = GameManager::GetInstance().GetActorManager()->CreateNewActor<AProjectile>("ShipProjectile", "Assets/Asteroid.png", owner->GetCenter(), owner);
+    NewProjectile->SendInDirection(owner->GetForwardVector());
 }
 
 void PlayerController::MoveCharacter(float movementDirection)
 {
-    if (APlayer* castedPlayer = static_cast<APlayer*>(controllingActor))
+    if (APlayer* castedPlayer = dynamic_cast<APlayer*>(owner))
     {
         sf::Vector2f fVec = castedPlayer->GetForwardVector() * movementDirection; //-1 if moving backward, 1 if moving forward
         float movFrame = forwardSpeed * GameManager::GetInstance().GetDeltaTime(); //How far to move forward in a singular frame

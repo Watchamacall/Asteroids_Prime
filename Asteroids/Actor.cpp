@@ -18,6 +18,15 @@ Actor::Actor(const std::string &actorName, const std::string &textureLocation, c
 void Actor::FrameCall(float dt)
 {
 	collider = sprite.getGlobalBounds();
+	float newHeight = collider.height * collisionMultiplication;
+	float differenceHeight = collider.height - newHeight;
+	collider.height = newHeight;
+	collider.top += differenceHeight / 2;
+	
+	float newWidth = collider.width * collisionMultiplication;
+	float differenceWidth = collider.width - newWidth;
+	collider.width = newWidth;
+	collider.left += differenceWidth / 2;
 
 	for (auto& component : components)
 	{
@@ -95,6 +104,11 @@ bool Actor::Intersects(Actor *otherActor)
 
 void Actor::TryCollision(Actor *other)
 {
+	if (!IsCollisionEnabled() || !other->IsCollisionEnabled())
+	{
+		return;
+	}
+	
 	auto foundActor = std::find_if(collidingActors.begin(), collidingActors.end(), [&](Actor* actor) 
 	{
         return actor == other;

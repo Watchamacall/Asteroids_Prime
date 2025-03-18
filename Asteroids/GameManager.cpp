@@ -12,10 +12,21 @@ GameManager::GameManager(const int windowWidth, const int windowHeight, std::str
 
     actorManager = std::make_unique<ActorManager>();
 
-    kHandle = std::make_unique<KeyboardHandle>();
+    mainMenuKeyboardHandle = std::make_unique<KeyboardHandle>();
+    playingKeyboardHandle = std::make_unique<KeyboardHandle>();
+    gameOverKeyboardHandle = std::make_unique<KeyboardHandle>();
 
     aMasterSpawner = std::make_unique<AsteroidMSpawner>();
 
+    mainMenuKeyboardHandle->GetKeyBindings()->CreateNewInput("Start", sf::Keyboard::Space);
+    mainMenuKeyboardHandle->GetKeyBindings()->GetInput("Start")->onPressed->AddDelegate([this] { gameState = STATE_PLAYING; });
+    mainMenuKeyboardHandle->GetKeyBindings()->CreateNewInput("Quit", sf::Keyboard::Escape);
+    mainMenuKeyboardHandle->GetKeyBindings()->GetInput("Quit")->onPressed->AddDelegate([this] { gameWindow->close(); });
+
+    gameOverKeyboardHandle->GetKeyBindings()->CreateNewInput("Restart", sf::Keyboard::Space);
+    gameOverKeyboardHandle->GetKeyBindings()->GetInput("Restart")->onPressed->AddDelegate([this] { gameState = STATE_PLAYING; });
+    gameOverKeyboardHandle->GetKeyBindings()->CreateNewInput("Quit", sf::Keyboard::Escape);
+    gameOverKeyboardHandle->GetKeyBindings()->GetInput("Quit")->onPressed->AddDelegate([this] { gameWindow->close(); });
 }
 
 void GameManager::InitialiseGame()
@@ -40,18 +51,44 @@ void GameManager::InitialiseGame()
             }
         }
 
-        kHandle->CheckInputs();
-
-        dt = deltaClock.restart().asSeconds(); //Delta Time
-
-        actorManager->FrameCall(dt);
-        aMasterSpawner->FrameCall(dt);
+        switch (gameState)
+        {
+        case STATE_MAIN_MENU:
+            HandleMainMenu();
+            break;
+        case STATE_PLAYING:
+            HandlePlaying();
+            break;
+        case STATE_GAME_OVER:
+            HandleGameOver();
+            break;
         
-
-
-        actorManager->DrawActors(gameWindow.get());
+        default:
+            break;
+        }
 
         gameWindow->display();
     }
-    
+}
+
+void GameManager::HandleMainMenu()
+{
+    mainMenuKeyboardHandle->CheckInputs();
+}
+
+void GameManager::HandlePlaying()
+{
+    playingKeyboardHandle->CheckInputs();
+
+    dt = deltaClock.restart().asSeconds(); //Delta Time
+
+    actorManager->FrameCall(dt);
+    aMasterSpawner->FrameCall(dt);
+
+    actorManager->DrawActors(gameWindow.get());
+
+}
+
+void GameManager::HandleGameOver()
+{
 }

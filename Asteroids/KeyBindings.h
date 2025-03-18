@@ -10,14 +10,6 @@
 #include "InputListener.h"
 #include "iostream"	
 
-/*
- * Main thing to do:
- * - Input Class which holds which button is to be listened for
- * - Have Delegate added for pressed, released
- * - Example: InputListener(sf::Keyboard::Key key, std::string name)
- * - InputListener::AddOnPressed(VoidDelegate)
- * - InputListener::ExecuteOnPressed()
- */
 class KeyBindings
 {
 protected:

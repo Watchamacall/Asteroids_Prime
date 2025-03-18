@@ -22,6 +22,8 @@ protected:
 	bool collisionEnabled = false;
 	bool toBeDestroyed = false;
 	Actor* owner;
+
+	float collisionMultiplication = 1.f;
 public:
 
 	Actor(const std::string& actorName, const std::string& textureLocation, const sf::Vector2f initialPosition = sf::Vector2f(), Actor* owner = nullptr);
@@ -68,9 +70,17 @@ public:
 	*/
 	sf::Vector2f const GetPosition() { return sprite.getPosition(); }
 	/*
+	* Returns the Center of the Actor
+	*/
+	sf::Vector2f const GetCenter() { return sf::Vector2f(collider.left + collider.width / 2, collider.top + collider.height / 2); }
+	/*
 	* Returns the current Rotation of the Actor
 	*/
 	float const GetRotation() { return sprite.getRotation(); }
+	/*
+	* Returns the current Color of the Actor
+	*/
+	sf::Color const GetColour() { return sprite.getColor(); }
 	/*
 	* Returns the Vector needed to move the Actor forward
 	*/
@@ -129,6 +139,10 @@ public:
 	* Sets the size of the Actor
 	*/
 	void SetScale(float newScale) { sprite.setScale(newScale,newScale); }
+	/*
+	* Sets the colour of the Actor
+	*/
+	void SetColour(sf::Color newColour) { sprite.setColor(newColour); }
 	/*
 	* Returns true if the OtherActor is intersecting with this Actor
 	*/

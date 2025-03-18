@@ -34,6 +34,14 @@ void ActorManager::DrawActors(sf::RenderWindow* drawingWindow)
     for (auto& sActor : allActors)
     {
         drawingWindow->draw(sActor->GetSprite());
+        sf::FloatRect collider = sActor->GetCollider();
+        sf::RectangleShape rectangle;
+        rectangle.setPosition(collider.left, collider.top);
+        rectangle.setSize(sf::Vector2f(collider.width, collider.height));
+        rectangle.setFillColor(sf::Color::Transparent);
+        rectangle.setOutlineColor(sf::Color::Red);
+        rectangle.setOutlineThickness(1.0f);
+        drawingWindow->draw(rectangle);
     }
 }
 

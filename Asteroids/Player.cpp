@@ -12,6 +12,10 @@ APlayer::APlayer(const std::string& textureLocation, const std::string& actorNam
 	playerScore = AddComponent<PlayerScore>();
 	uiManager = AddComponent<UIManager>();
 
+	playerLives->damageTaken->AddDelegate([this](int damage) { uiManager->LivesChanged(damage); });
+
+	collisionMultiplication = 0.5f;
+
 }
 
 void APlayer::FrameCall(float dt)

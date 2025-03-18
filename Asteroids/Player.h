@@ -19,6 +19,8 @@ public:
     virtual void FrameCall(float dt) override;
 
     virtual void OnCollisionStarted(Actor* other) override;
+
+    void ResetPlayer(int newLives);
     
 protected:
     PlayerController* controller;

@@ -8,8 +8,9 @@
 
 enum GameState : int8_t
 {
-	STATE_PAUSED = 0,
-	STATE_PLAYING = 1
+	STATE_MAIN_MENU = 0,
+	STATE_PLAYING = 1,
+	STATE_GAME_OVER = 2
 };
 
 // class AsteroidMSpawner;
@@ -51,7 +52,10 @@ protected:
 
 	std::unique_ptr<ActorManager> actorManager;
 	std::unique_ptr<AsteroidMSpawner> aMasterSpawner;
-	std::unique_ptr<KeyboardHandle> kHandle;
+	
+	std::unique_ptr<KeyboardHandle> playingKeyboardHandle;
+	std::unique_ptr<KeyboardHandle> mainMenuKeyboardHandle;
+	std::unique_ptr<KeyboardHandle> gameOverKeyboardHandle;
 
 public:
 	/*
@@ -67,7 +71,7 @@ public:
 	/*
 	* Returns the keybindings associated with the KeyboardHandle
 	*/
-	KeyBindings* GetKeybindings() { return kHandle->GetKeyBindings(); }
+	KeyBindings* GetKeybindings() { return playingKeyboardHandle->GetKeyBindings(); }
 
 	/*
 	* Returns the Delta Time in Seconds.
@@ -78,11 +82,21 @@ public:
 	* Returns the size of the Game Window
 	*/
 	sf::Vector2u GetWindowSize() { return gameWindow->getSize(); }
-
+	
+	/*
+	* Returns the Game Window
+	*/
 	sf::RenderWindow* GetWindow() const { return gameWindow.get(); }
+	
 	/*
 	* Initialises game runtime
 	*/
 	void InitialiseGame();
+
+	virtual void HandleMainMenu();
+
+	virtual void HandlePlaying();
+
+	virtual void HandleGameOver();
 };
 
