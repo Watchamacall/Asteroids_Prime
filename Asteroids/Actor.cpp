@@ -1,6 +1,7 @@
 #include "Actor.h"
 #include "GameManager.h"
 #include "Component.h"
+#include "GameState.h"
 
 Actor::Actor(const std::string &actorName, const std::string &textureLocation, const sf::Vector2f initialPosition, Actor* owner) : owner(owner)
 {

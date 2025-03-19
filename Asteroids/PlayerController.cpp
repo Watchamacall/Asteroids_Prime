@@ -1,9 +1,10 @@
 #include "PlayerController.h"
 #include "Player.h"
+#include "GameState.h"
 
 void PlayerController::FrameCall(float dt)
 {
-    
+    keyboardHandle->CheckInputs();
 }
 
 void PlayerController::RotateCharacter(float rotationDirection)
@@ -50,7 +51,7 @@ void PlayerController::WrapCheck()
 
 void PlayerController::ShootProjectile()
 {
-    AProjectile* NewProjectile = GameManager::GetInstance().GetActorManager()->CreateNewActor<AProjectile>("ShipProjectile", "Assets/Asteroid.png", owner->GetCenter(), owner);
+    AProjectile* NewProjectile = GameManager::GetInstance().GetCurrentGameState()->GetActorManager()->CreateNewActor<AProjectile>("ShipProjectile", "Assets/Asteroid.png", owner->GetCenter(), owner);
     NewProjectile->SendInDirection(owner->GetForwardVector());
 }
 

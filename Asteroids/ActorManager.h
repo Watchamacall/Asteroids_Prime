@@ -40,13 +40,17 @@ public:
     /*
     * Destroys Actor based on the pointer
     */ 
-    bool destroyActor(Actor* actorToDestroy);
+    bool DestroyActor(Actor* actorToDestroy);
 
     /*
     * Draws all the Actors to the drawingWindow
     */
     void DrawActors(sf::RenderWindow* drawingWindow);
 
+    /*
+    * Clears all the Actors from the Manager
+    */
+    void ClearActors() { allActors.clear(); }
     /*
     * Returns true if name exists in the currently spawned Actors
     */

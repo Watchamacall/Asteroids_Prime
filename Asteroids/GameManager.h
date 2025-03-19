@@ -4,14 +4,9 @@
 #include "ActorManager.h"
 #include "KeyboardHandle.h"
 #include "AsteroidMSpawner.h"
+#include "GameState.h"
+#include "StateManager.h"
 #include <memory>
-
-enum GameState : int8_t
-{
-	STATE_MAIN_MENU = 0,
-	STATE_PLAYING = 1,
-	STATE_GAME_OVER = 2
-};
 
 // class AsteroidMSpawner;
 class APlayer;
@@ -47,32 +42,15 @@ protected:
 	sf::Clock gameClock;
 	sf::Clock deltaClock;
 	std::unique_ptr<sf::RenderWindow> gameWindow;
-	GameState gameState;
+	std::unique_ptr<StateManager> stateManager;
 	float dt;
 
-	std::unique_ptr<ActorManager> actorManager;
-	std::unique_ptr<AsteroidMSpawner> aMasterSpawner;
-	
-	std::unique_ptr<KeyboardHandle> playingKeyboardHandle;
-	std::unique_ptr<KeyboardHandle> mainMenuKeyboardHandle;
-	std::unique_ptr<KeyboardHandle> gameOverKeyboardHandle;
-
 public:
-	/*
-	* const ActorManager
-	*/
-	const ActorManager* GetActorManager() const { return actorManager.get(); }
 
 	/*
-	* non-const ActorManager
+	* Returns the current GameState the program is running in
 	*/
-	ActorManager* GetActorManager() { return actorManager.get(); }
-
-	/*
-	* Returns the keybindings associated with the KeyboardHandle
-	*/
-	KeyBindings* GetKeybindings() { return playingKeyboardHandle->GetKeyBindings(); }
-
+	GameState* GetCurrentGameState() { return stateManager->GetCurrentState(); }
 	/*
 	* Returns the Delta Time in Seconds.
 	*/
@@ -92,11 +70,5 @@ public:
 	* Initialises game runtime
 	*/
 	void InitialiseGame();
-
-	virtual void HandleMainMenu();
-
-	virtual void HandlePlaying();
-
-	virtual void HandleGameOver();
 };
 

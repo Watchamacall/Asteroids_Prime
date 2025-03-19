@@ -9,7 +9,7 @@ ActorManager::ActorManager()
 
 }
 
-bool ActorManager::destroyActor(Actor* actorToDestroy)
+bool ActorManager::DestroyActor(Actor* actorToDestroy)
 {
     if (!actorToDestroy)
     {

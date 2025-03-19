@@ -17,25 +17,30 @@ class PlayerController : public Component
 public:
 	PlayerController(Actor* owner) : Component(owner)
 	{
-		bindings = GameManager::GetInstance().GetKeybindings();
+		keyboardHandle = std::make_unique<KeyboardHandle>();
 
-		forward = bindings->CreateNewInput("Forward", sf::Keyboard::W);
+		forward = keyboardHandle->GetKeyBindings()->CreateNewInput("Forward", sf::Keyboard::W);
 		forward->onHeld->AddDelegate([this] { MoveCharacter(1); });
 
-		right = bindings->CreateNewInput("Right", sf::Keyboard::D);
+		right = keyboardHandle->GetKeyBindings()->CreateNewInput("Right", sf::Keyboard::D);
 		right->onHeld->AddDelegate([this] { RotateCharacter(1); });
 
-		left = bindings->CreateNewInput("Left", sf::Keyboard::A);
+		left = keyboardHandle->GetKeyBindings()->CreateNewInput("Left", sf::Keyboard::A);
 		left->onHeld->AddDelegate([this] { RotateCharacter(-1); });
 
-		shoot = bindings->CreateNewInput("Shoot", sf::Keyboard::Space);
+		shoot = keyboardHandle->GetKeyBindings()->CreateNewInput("Shoot", sf::Keyboard::Space);
 		shoot->onPressed->AddDelegate([this] { ShootProjectile(); });
+
+		//Start player in middle of screen
+		sf::Vector2u windowSize = GameManager::GetInstance().GetWindowSize();
+		owner->SetPosition(sf::Vector2f(windowSize.x / 2, windowSize.y / 2));
+
 	}
 
 	virtual void FrameCall(float dt) override;
 
 protected:
-	KeyBindings* bindings;
+	std::unique_ptr<KeyboardHandle> keyboardHandle;
 	float forwardSpeed = 500.f;
 	float rotationSpeed = 250.f;
 

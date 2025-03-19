@@ -2,6 +2,7 @@
 #include "GameManager.h"
 #include "Player.h"
 #include "Random.h"
+#include "GameState.h"
 
 void AAsteroid::FrameCall(float dt)
 {
@@ -32,7 +33,7 @@ void AAsteroid::OnCollisionStarted(Actor *other)
     }
     for (size_t i = 0; i < 2; i++)
     {
-        AAsteroid* newAst = GameManager::GetInstance().GetActorManager()->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png", GetPosition());
+        AAsteroid* newAst = GameManager::GetInstance().GetCurrentGameState()->GetActorManager()->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png", GetPosition());
 
         newAst->SetAsteroidSize(asteroidSet + 1);
         //Scale NewAsteroid

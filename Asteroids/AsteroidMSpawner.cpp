@@ -1,5 +1,6 @@
 #include "AsteroidMSpawner.h"
 #include "Asteroid.h"
+#include "GameState.h"
 
 AsteroidMSpawner::AsteroidMSpawner()
 {
@@ -34,7 +35,7 @@ void AsteroidMSpawner::FrameCall(float dt)
 
         sf::Vector2f vector = sf::Vector2f(xDifference + Random::RandomFloat(-movementFromCenter, movementFromCenter), yDifference + Random::RandomFloat(-movementFromCenter, movementFromCenter));
         
-        AAsteroid* spawnedAsteroid = GameManager::GetInstance().GetActorManager()->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png", spawnLocation);
+        AAsteroid* spawnedAsteroid = GameManager::GetInstance().GetCurrentGameState()->GetActorManager()->CreateNewActor<AAsteroid>("Asteroid", "Assets/Asteroid.png", spawnLocation);
 
         spawnedAsteroid->SetAsteroidVector(vector);
 
