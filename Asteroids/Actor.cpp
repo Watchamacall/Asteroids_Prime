@@ -14,6 +14,7 @@ Actor::Actor(const std::string &actorName, const std::string &textureLocation, c
 	}
 	sprite.setTexture(texture);
 	collider = sprite.getGlobalBounds();
+	sprite.setOrigin(collider.width / 2.f, collider.height / 2.f);
 }
 
 void Actor::FrameCall(float dt)

@@ -13,9 +13,9 @@ APlayer::APlayer(const std::string& textureLocation, const std::string& actorNam
 	uiManager = AddComponent<UIManager>();
 
 	playerLives->damageTaken->AddDelegate([this](int damage) { uiManager->LivesChanged(damage); });
+	playerLives->noLivesLeft->AddDelegate([this] { GameManager::GetInstance().ChangeToGameOverState(); });
 
 	collisionMultiplication = 0.5f;
-
 }
 
 void APlayer::FrameCall(float dt)

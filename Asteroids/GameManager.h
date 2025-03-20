@@ -14,29 +14,27 @@ class APlayer;
 class GameManager
 {
 private:
-
 	static std::unique_ptr<GameManager> instance;
 
 	/*
-	* Create a GameManager with both a Window Size and a custom title
-	*/
+	 * Create a GameManager with both a Window Size and a custom title
+	 */
 	GameManager(const int windowWidth, const int windowHeight, std::string windowTitle);
 
 public:
-
-	static GameManager& GetInstance(const int windowWidth = 800, const int windowHeight = 600, std::string windowTitle = "Asteroids Example")
+	static GameManager &GetInstance(const int windowWidth = 800, const int windowHeight = 600, std::string windowTitle = "Asteroids Example")
 	{
 		if (!instance)
 		{
 			instance = std::unique_ptr<GameManager>(new GameManager(windowWidth, windowHeight, windowTitle));
 		}
-		
+
 		return *instance;
 	}
 
-	//Stop another instance of GameManager from existing
-	GameManager(const GameManager&) = delete;
-	GameManager operator=(const GameManager&) = delete;
+	// Stop another instance of GameManager from existing
+	GameManager(const GameManager &) = delete;
+	GameManager operator=(const GameManager &) = delete;
 
 protected:
 	sf::Clock gameClock;
@@ -45,30 +43,37 @@ protected:
 	std::unique_ptr<StateManager> stateManager;
 	float dt;
 
+	GameState *mainMenuState;
+	GameState *playingState;
+	GameState *gameOverState;
+
 public:
+	/*
+	 * Returns the current GameState the program is running in
+	 */
+	GameState *GetCurrentGameState() { return stateManager->GetCurrentState(); }
+
+	void ChangeToPlayState() { stateManager->ChangeState(playingState); }
+	void ChangeToMainMenuState() { stateManager->ChangeState(mainMenuState); }
+	void ChangeToGameOverState() { stateManager->ChangeState(gameOverState); }
 
 	/*
-	* Returns the current GameState the program is running in
-	*/
-	GameState* GetCurrentGameState() { return stateManager->GetCurrentState(); }
-	/*
-	* Returns the Delta Time in Seconds.
-	*/
+	 * Returns the Delta Time in Seconds.
+	 */
 	float GetDeltaTime() { return dt; };
 
 	/*
-	* Returns the size of the Game Window
-	*/
+	 * Returns the size of the Game Window
+	 */
 	sf::Vector2u GetWindowSize() { return gameWindow->getSize(); }
-	
+
 	/*
-	* Returns the Game Window
-	*/
-	sf::RenderWindow* GetWindow() const { return gameWindow.get(); }
-	
+	 * Returns the Game Window
+	 */
+	sf::RenderWindow *GetWindow() const { return gameWindow.get(); }
+
 	/*
-	* Initialises game runtime
-	*/
+	 * Initialises game runtime
+	 */
 	void InitialiseGame();
 };
-
