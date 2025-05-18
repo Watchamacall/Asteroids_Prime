@@ -13,6 +13,7 @@ public:
 protected:
     sf::Vector2f moveDir;
     float projectileSpeed = 550.f;
+    sf::Color projectileColor = sf::Color::Red;
 public:
     void SendInDirection(sf::Vector2f movementDirection);
 

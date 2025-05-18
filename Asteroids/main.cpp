@@ -23,6 +23,7 @@ int main()
 
 
     //Initalise GameManager
+    //TODO: Turn into SharedPtr which hooks into Actors, allows for GameManager to be accessed no matter where and not locked into one place like this currently is.
     GameManager::GetInstance().InitialiseGame();
 
     return 0;

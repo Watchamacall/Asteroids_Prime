@@ -17,6 +17,8 @@ protected:
 
     std::vector<std::unique_ptr<Actor>> newActors;
 
+    bool debugCollisions = false;
+
 public:
     /*
     * Creates an Actor of type T and returns it
