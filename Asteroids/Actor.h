@@ -16,7 +16,7 @@ protected:
 	std::string name;
 
 	std::vector<std::unique_ptr<Component>> components;
-
+ 
 	std::vector<Actor*> collidingActors;
 
 	bool collisionEnabled = false;
